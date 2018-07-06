@@ -1,0 +1,59 @@
+DB
+_______________________
+What objects need to save in DB
+Create schema
+
+Project:
+
+ProjectID - PK
+Name
+Owner - FK
+Status
+Description
+Money Required
+Money Donated
+Photo?
+Video?
+List of donators
+List of rewards
+Start date
+End date
+
+User:
+
+UserID
+Email - unique
+Full Name
+Password - encrypted
+
+
+Server side - NodeJS
+____________________________
+Admin user - for site management
+Initiator user for project creation
+Contributor user - money contribution
+
+Encrypt passwords
+
+Sign In
+Sign Up
+Contrubute money
+
+Projects categories
+Project Search
+
+
+
+Client Side - JavaScript/Angular/Ajax/Bootstrap
+________________________
+
+Main screen - Home - Contains number of active projects and list of projects
+Project List - has project description
+
+Sign In
+Sign Up
+Contrubute money
+
+
+Projects categories
+Project Search

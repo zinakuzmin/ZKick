@@ -1,0 +1,34 @@
+{
+  "name": "zkick",
+  "version": "1.0.0",
+  "description": "kickstarter project",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "nodemailer": "^4.6.7",
+    "nodemon": "^1.17.5",
+    "session": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zinakuzmin/ZKick.git"
+  },
+  "author": "Zina Kuzmin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zinakuzmin/ZKick/issues"
+  },
+  "homepage": "https://github.com/zinakuzmin/ZKick#readme"
+}
