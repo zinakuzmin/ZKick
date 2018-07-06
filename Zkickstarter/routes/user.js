@@ -1,3 +1,5 @@
+var bcrypt = require('bcrypt');
+
 
 //---------------------------------------------signup page call------------------------------------------------------
 exports.signup = function(req, res){
@@ -9,14 +11,20 @@ exports.signup = function(req, res){
       var fname= post.first_name;
       var lname= post.last_name;
       var age= post.age;
+      var saltRounds = 10;
 
-      var sql = "INSERT INTO users (username, lastname, firstname, password, age) VALUES ('" + name + "', '" + lname + "','" + fname + "','" + pass + "','" + age + "')";
+       bcrypt.hash(pass, saltRounds, function(err, hash) {
+           if (err) throw err;
+           console.log("Encrypted password "+ hash)
+           var sql = "INSERT INTO users (username, lastname, firstname, password, age) VALUES ('" + name + "', '" + lname + "','" + fname + "','" + hash + "','" + age + "')";
 
-      var query = db.query(sql, function(err, result) {
+           var query = db.query(sql, function(err, result) {
 
-         message = "Succesfully! Your account has been created.";
-         res.render('signup.ejs',{message: message});
-      });
+               message = "Succesfully! Your account has been created.";
+               res.render('signup.ejs',{message: message});
+           });
+       });
+
 
    } else {
       res.render('signup');
@@ -33,16 +41,26 @@ exports.login = function(req, res){
       var name= post.user_name;
       var pass= post.password;
      
-      var sql="SELECT ID, firstName, lastName, username FROM users WHERE username='" + name +"'";
+      var sql="SELECT * FROM users WHERE username='" + name +"'";
       // var sql="SELECT id, firstname, lastname, username FROM `users` WHERE `username`='"+name+"' and password = '"+pass+"'";
       db.query(sql, function(err, results){
          if (err) throw err;
          if(results.length){
             console.log("user found " + results[0].username)
-            req.session.userId = results[0].ID;
-            req.session.user = results[0];
-            console.log(results[0].ID);
-            res.redirect('/home/dashboard');
+             bcrypt.compare(pass, results[0].password, function(err, result) {
+                 if (err) throw err;
+                 if (result){
+                     req.session.userId = results[0].ID;
+                     req.session.user = results[0];
+                     console.log(results[0].ID);
+                     res.redirect('/home/dashboard');
+                 }
+                 else{
+                     message = 'Wrong Password (Change me).';
+                     res.render('index.ejs',{message: message});
+                 }
+             });
+
          }
          else{
             message = 'Wrong Credentials.';
