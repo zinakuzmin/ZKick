@@ -57,3 +57,20 @@ Contrubute money
 
 Projects categories
 Project Search
+
+____________________________
+
+Dashboard:
+
+Get total number of projects
+Get total number of closed projects
+Get all projects and display:
+
+Project name
+Project description
+Project category
+Location
+Cover image
+Time remains
+Amount requested
+Amount donated

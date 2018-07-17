@@ -1,16 +1,32 @@
 /**
 * Module dependencies.
 */
+// var express = require('express')
+//   , routes = require('./routes')
+//   , user = require('./routes/user')
+//   , http = require('http')
+//   , path = require('path');
+
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
+    , routes = require('./routes')
+    , user = require('./routes/user')
+    , http = require('http')
+    , path = require('path')
+    , busboy = require("then-busboy")
+    , fileUpload = require('express-fileupload')
+    , app = express()
+    , mysql      = require('mysql')
+    , bodyParser=require("body-parser")
+    , bcrypt = require('bcrypt');
+
+
 //var methodOverride = require('method-override');
 var session = require('express-session');
 var app = express();
 var mysql      = require('mysql');
 var bodyParser=require("body-parser");
+
+
 var connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'admin',
@@ -29,6 +45,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 app.use(session({
               secret: 'keyboard cat',
               resave: false,
@@ -46,5 +63,9 @@ app.post('/login', user.login);//call for login post
 app.get('/home/dashboard', user.dashboard);//call for dashboard page after login
 app.get('/home/logout', user.logout);//call for logout
 app.get('/home/profile',user.profile);//to render users profile
+app.get('/home/createProject',user.create);//to render create project page
+// app.get('/home/selectImages',user.selectimages);//to render upload images project page
+app.post('/home/createProject',user.createproject);//to create project
+// app.post('/home/uploadImages',user.uploadimages);//to upload images to project
 //Middleware
 app.listen(3000)

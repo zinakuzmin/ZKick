@@ -1,4 +1,5 @@
 <html lang="en">
+<link rel='stylesheet' href='..view//css/base.css' />
 
    <%- include header %>
    <!-- Main component for a primary marketing message or call to action -->
@@ -8,5 +9,163 @@
         <p>
           <a class="btn btn-lg btn-primary" href="/home/profile" role="button">Profile view »</a>
         </p>
+          <p>
+              <a class="btn btn-lg btn-primary" href="/home/createProject" role="button">Create new project »</a>
+          </p>
       </div>
-    <%- include footer %>
+
+
+   <div class="row">
+       <div class="column">
+           <div class="card">
+               <img src="C:\Users\zina\Desktop\Screenshots\ScreenHunter24.png" alt="Jane" style="width:100%">
+               <div class="container">
+                   <h2>Jane Doe</h2>
+                   <p class="title">CEO & Founder</p>
+                   <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                   <p>example@example.com</p>
+                   <div id="myProgress">
+                       <div id="myBar">10%</div>
+                   </div>
+                   <p><button class="button">Contact</button></p>
+               </div>
+           </div>
+       </div>
+
+       <div class="column">
+           <div class="card">
+               <img src="C:\OldStuff\pictures\2013_BugHunt4.0\2013_04_10_9999_23.jpg" alt="Mike" style="width:100%">
+               <div class="container">
+                   <h2>Donate money for homeless cockroarches</h2>
+                   <p class="title">Community project</p>
+                   <p>Some text that describes the project</p>
+                   <p>example@example.com</p>
+                   <p id="countdown"></p>
+                   <div id="myProgress">
+                       <div id="myBar">10%</div>
+                   </div>
+                   <p><button class="button">Contact</button></p>
+               </div>
+           </div>
+       </div>
+       <div class="column">
+           <div class="card">
+               <img src="C:\OldStuff\pictures\2013_BugHunt4.0\2013_04_10_9999_25.jpg" alt="John" style="width:100%">
+               <div class="container">
+                   <h2>John Doe</h2>
+                   <p class="title">Designer</p>
+                   <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                   <p>example@example.com</p>
+                   <p><button class="button">Contact</button></p>
+               </div>
+           </div>
+       </div>
+   </div>
+
+<%- include footer %>
+
+<style>
+    html {
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    .column {
+        float: left;
+        width: 33.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+
+    @media screen and (max-width: 650px) {
+        .column {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .container::after, .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .title {
+        color: grey;
+    }
+
+    .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .button:hover {
+        background-color: #555;
+    }
+
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+
+    #myBar {
+        width: 10%;
+        height: 20px;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 20px;
+        color: white;
+    }
+
+</style>
+
+
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        //var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " ;// + seconds + "s ";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
