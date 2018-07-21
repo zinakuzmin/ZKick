@@ -74,3 +74,44 @@ Cover image
 Time remains
 Amount requested
 Amount donated
+
+Project json
+
+[
+{
+id : 1,
+name : 'ProjectName'
+owner_id : id
+description: 'Desc',
+category: 'Category',
+status:
+location:
+requestedMoney:
+donatedMoney:
+numberOfSupporters:
+video_link:
+start_date:
+end_date:
+images :
+	[
+	{id:
+	img_name:
+	is_image_cover:}
+	]
+
+rewards:
+	[
+	{ id:
+	name:
+	description:
+	numberOfAvailable:}
+	]
+
+}
+
+]
+
+___________________________
+
+Func to receive specific project
+Func to receive all projects

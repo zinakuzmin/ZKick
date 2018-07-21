@@ -41,10 +41,14 @@ global.db = connection;
 // all environments
 app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
+app.set('data', __dirname + '/data');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'data')));
+// var publicDir = require('path').join(__dirname,'/public');
+// app.use(express.static(publicDir));
 app.use(fileUpload());
 app.use(session({
               secret: 'keyboard cat',
@@ -60,12 +64,21 @@ app.get('/signup', user.signup);//call for signup page
 app.post('/signup', user.signup);//call for signup post 
 app.get('/login', routes.index);//call for login page
 app.post('/login', user.login);//call for login post
-app.get('/home/dashboard', user.dashboard);//call for dashboard page after login
+app.get('/test', user.test); //call for main index page
+app.get('/home/dashboard', user.getdashboard);//call for dashboard page after login
+app.get('/home/projects', user.dashboard);//call for dashboard page after login
+app.get('/home/getprojectimage', user.getprojectimage);//call for dashboard page after login
 app.get('/home/logout', user.logout);//call for logout
 app.get('/home/profile',user.profile);//to render users profile
 app.get('/home/createProject',user.create);//to render create project page
 // app.get('/home/selectImages',user.selectimages);//to render upload images project page
 app.post('/home/createProject',user.createproject);//to create project
 // app.post('/home/uploadImages',user.uploadimages);//to upload images to project
+app.get('/home/facebook.tpl.html', function(req, res){
+    res.sendfile('C:\\oldLaptop2018\\afeka\\Internet\\Kickstarter\\ZKick\\Zkickstarter\\views\\facebook.tpl.html');
+})
+;app.get('/home/twitter.tpl.html', function(req, res){
+    res.sendfile('C:\\oldLaptop2018\\afeka\\Internet\\Kickstarter\\ZKick\\Zkickstarter\\views\\twitter.tpl.html');
+});
 //Middleware
 app.listen(3000)

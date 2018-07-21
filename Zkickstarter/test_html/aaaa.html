@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body ng-app="exampleApp" ng-controller="DynamicFormCtrl as ctrl">
+  <div>
+    <button ng-click="ctrl.addForm(0)">Form One</button>
+    <button ng-click="ctrl.addForm(1)">Form Two</button>
+    <button ng-click="ctrl.addForm(2)">Form Three</button>
+  </div>
+  
+  <div ng-repeat="form in ctrl.displayedForms track by $index">
+    <ng-include src="form"></ng-include>
+  </div>
+  
+  <script type="text/ng-template" id="form1.tpl.html">
+    <label>
+      Form one is an input: <input type="text" />
+    </label>
+  </script>
+
+  <script type="text/ng-template" id="form2.tpl.html">
+    <label>
+      Form two gives you choices: <input type="radio"/> <input type="radio"/>
+    </label>
+  </script>
+  
+  <script type="text/ng-template" id="form3.tpl.html">
+    <button>Form three is a button</button>
+  </script>
+
+
+</body>
+</html>
+
+<script>
+angular.module("exampleApp", [])
+  .controller("DynamicFormCtrl", function() {
+    var ctrl = this;
+    
+    var forms = [
+      "form1.tpl.html",
+      "form2.tpl.html",
+      "form3.tpl.html",
+    ];
+    
+    ctrl.displayedForms = [];
+    
+    ctrl.addForm = function(formIndex) {
+      ctrl.displayedForms.push(forms[formIndex]);
+    }
+  });
+  
+  </script>

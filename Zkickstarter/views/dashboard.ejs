@@ -1,7 +1,40 @@
-<html lang="en">
-<link rel='stylesheet' href='..view//css/base.css' />
+<!--<html lang="en">-->
+<!--<html ng-app="app">-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
+<!--<link rel='stylesheet' href='..view//css/base.css' />-->
+<!--<script data-require="angular.js@*" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>-->
+<!--<link rel="stylesheet" href="../view/css/style.css" />-->
+<!--<script src="script.js"></script>-->
+<html ng-app="app">
+<head>
+    //<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sample Site</title>
+    <!--<link rel='stylesheet' href='..view//css/base.css' />-->
+    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="/script.js"></script>
 
-   <%- include header %>
+</head>
+<body ng-controller="Controller">
+<div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/home/dashboard">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <input type="text" placeholder="Search.."></li>
+                    <li><a href="/home/logout">Logout</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
    <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h1>Welcome</h1>
@@ -14,55 +47,12 @@
           </p>
       </div>
 
+        <profile ng-repeat="project in projects" data="project"></profile>
 
-   <div class="row">
-       <div class="column">
-           <div class="card">
-               <img src="C:\Users\zina\Desktop\Screenshots\ScreenHunter24.png" alt="Jane" style="width:100%">
-               <div class="container">
-                   <h2>Jane Doe</h2>
-                   <p class="title">CEO & Founder</p>
-                   <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                   <p>example@example.com</p>
-                   <div id="myProgress">
-                       <div id="myBar">10%</div>
-                   </div>
-                   <p><button class="button">Contact</button></p>
-               </div>
-           </div>
-       </div>
+</div>
+    </body>
+</html>
 
-       <div class="column">
-           <div class="card">
-               <img src="C:\OldStuff\pictures\2013_BugHunt4.0\2013_04_10_9999_23.jpg" alt="Mike" style="width:100%">
-               <div class="container">
-                   <h2>Donate money for homeless cockroarches</h2>
-                   <p class="title">Community project</p>
-                   <p>Some text that describes the project</p>
-                   <p>example@example.com</p>
-                   <p id="countdown"></p>
-                   <div id="myProgress">
-                       <div id="myBar">10%</div>
-                   </div>
-                   <p><button class="button">Contact</button></p>
-               </div>
-           </div>
-       </div>
-       <div class="column">
-           <div class="card">
-               <img src="C:\OldStuff\pictures\2013_BugHunt4.0\2013_04_10_9999_25.jpg" alt="John" style="width:100%">
-               <div class="container">
-                   <h2>John Doe</h2>
-                   <p class="title">Designer</p>
-                   <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                   <p>example@example.com</p>
-                   <p><button class="button">Contact</button></p>
-               </div>
-           </div>
-       </div>
-   </div>
-
-<%- include footer %>
 
 <style>
     html {
@@ -139,33 +129,34 @@
 
 
 
-<script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+<!--countdown script-->
+<!--<script>-->
+    <!--// Set the date we're counting down to-->
+    <!--var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();-->
 
-    // Update the count down every 1 second
-    var x = setInterval(function() {
+    <!--// Update the count down every 1 second-->
+    <!--var x = setInterval(function() {-->
 
-        // Get todays date and time
-        var now = new Date().getTime();
+        <!--// Get todays date and time-->
+        <!--var now = new Date().getTime();-->
 
-        // Find the distance between now an the count down date
-        var distance = countDownDate - now;
+        <!--// Find the distance between now an the count down date-->
+        <!--var distance = countDownDate - now;-->
 
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        //var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        <!--// Time calculations for days, hours, minutes and seconds-->
+        <!--var days = Math.floor(distance / (1000 * 60 * 60 * 24));-->
+        <!--var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));-->
+        <!--var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));-->
+        <!--//var seconds = Math.floor((distance % (1000 * 60)) / 1000);-->
 
-        // Output the result in an element with id="demo"
-        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " ;// + seconds + "s ";
+        <!--// Output the result in an element with id="demo"-->
+        <!--document.getElementById("countdown").innerHTML = days + "d " + hours + "h "-->
+            <!--+ minutes + "m " ;// + seconds + "s ";-->
 
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-    }, 1000);
-</script>
+        <!--// If the count down is over, write some text-->
+        <!--if (distance < 0) {-->
+            <!--clearInterval(x);-->
+            <!--document.getElementById("demo").innerHTML = "EXPIRED";-->
+        <!--}-->
+    <!--}, 1000);-->
+<!--</script>-->
