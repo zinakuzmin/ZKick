@@ -1,0 +1,503 @@
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+   <%- include header %>
+   <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Create your project</h1>
+
+          <div class="container col-sm-20" id="mainform">
+              <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-24 col-md-offset-2 col-sm-8 col-sm-offset-2">
+
+                  <div class="panel panel-info">
+                      <div class="panel-heading">
+                          <!--<div class="panel-title">Sign Up</div>-->
+                          <!--<div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/">Sign In</a></div>-->
+                      </div>
+                      <!--<div class="input-group" >-->
+                      <div class="panel-body" >
+                          <form class="form-horizontal" role="form" method="post" action="/home/updateProject" enctype="multipart/form-data">
+                          <!--<form class="form-horizontal" role="form" method="post" action="/home/createProject" onSubmit="return checkblank(this);">-->
+                          <!--<form class="form-horizontal"  role="form"  method="post"  action="/createProject" onSubmit="return checkblank(this);">-->
+
+
+                              <div class="form-group">
+                                  <label for="project_name" class="col-md-3 control-label">Project Name</label>
+                                  <div class="col-md-9">
+                                      <input type="text" class="form-control" name="project_name" value=<%=project.name%>>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="project_description" class="col-md-3 control-label">Project description</label>
+                                  <div class="col-md-9">
+                                      <!--<input type="text" class="form-control" name="project_description">-->
+                                      <!--<textarea name="project_description" rows="10" cols="30">Describe your project</textarea>-->
+                                      <textarea name="project_description" class="form-control" ><%=project.description%></textarea>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="money_amount" class="col-md-3 control-label">Requested Money Amount</label>
+                                  <div class="col-md-9">
+                                      <input type="age" class="form-control" name="money_amount" value=<%=project.requestedAmountOfMoney%> >
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="video_link" class="col-md-3 control-label">Video URL</label>
+                                  <div class="col-md-9">
+                                      <input type="text" class="form-control" name="video_link" value=<%=project.video_link%>>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="location" class="col-md-3 control-label">Location</label>
+                                  <div class="col-md-9">
+                                      <input type="location" class="form-control" name="location" value=<%=project.location%>>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="projectID" class="col-md-3 control-label">ID</label>
+                                  <div class="col-md-9">
+                                      <input type="projectID" class="form-control" name="projectID" value=<%=project.ID%>>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <fieldset>
+                                      <legend>Choose project dates</legend>
+
+                                      <div>
+                                          <label for="start">Start</label>
+                                          <input type="date" id="start" name="project_start_date"
+                                                 value="2018-07-22"
+                                                 min="2018-01-01" max="2018-12-31" />
+                                      </div>
+
+                                      <div>
+                                          <label for="end">End</label>
+                                          <input type="date" id="end" name="project_end_date"
+                                                 value="2018-07-29"
+                                                 min="2018-01-01" max="2018-12-31" />
+                                      </div>
+
+                                  </fieldset>
+
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="categories" class="col-md-3 control-label">Choose project category</label>
+                                  <div class="col-md-9">
+                                      <input list="categories" name="category" value=<%=project.category%>>
+                                      <datalist id="categories">
+                                          <option value="Art">
+                                          <option value="Technology">
+                                          <option value="Community">
+                                          <option value="Children">
+                                          <option value="Animals">
+                                          <option value="Other">
+                                      </datalist>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <!--<label for="image" class="col-md-3 control-label">Image upload</label>-->
+                                  <!--<div class="col-md-9">-->
+                                      <!--<input type="file" onchange="previewFile()"><br>-->
+                                      <!--<img src="" height="200" alt="Image preview...">-->
+                                  <!--</div>-->
+                                  <div>
+                                      <label style="font-size: 14px;">
+                                          <span style='color:navy;font-weight:bold'>Attachment Instructions :</span>
+                                      </label>
+                                      <ul>
+                                          <li>
+                                              Allowed only files with extension (jpg, png, gif)
+                                          </li>
+                                          <li>
+                                              Maximum number of allowed files 10 with 300 KB for each
+                                          </li>
+                                          <li>
+                                              you can select files from different folders
+                                          </li>
+                                      </ul>
+                                      <!--To give the control a modern look, I have applied a stylesheet in the parent span.-->
+                                      <span class="btn btn-success fileinput-button">
+                                          <span>Select Attachment</span>
+                                             <!--<input class="form-control" type="file" name="uploaded_images[]" multiple accept="image/jpeg, image/png, image/gif"/>-->
+                                             <input  type="file" name="uploaded_images[]" multiple accept="image/jpeg, image/png, image/gif"/>
+                                             <!--<input type="file" name="imgUploader" multiple accept="image/jpeg, image/png, image/gif"/><br />-->
+                                             <!--<input type="file" name="files[]" id="files" multiple accept="image/jpeg, image/png, image/gif,"><br />-->
+                                             <!--<input type="file" name="fullfiles[]" id="fullfiles" multiple accept="image/jpeg, image/png, image/gif,"><br />-->
+                                      </span>
+                                      <output id="Filelist"></output>
+                                  </div>
+                              </div></div>
+
+                      <!--<button class="w3-btn w3-green w3-ripple" ng-click="editUser('new')">&#9998; Create New User</button>-->
+
+                      <!--<form ng-hide="hideform">-->
+                          <!--<h3 ng-show="edit">Create New User:</h3>-->
+                          <!--<h3 ng-hide="edit">Edit User:</h3>-->
+                          <!--<label>First Name:</label>-->
+                          <!--<input class="w3-input w3-border" type="text" ng-model="fName" ng-disabled="!edit" placeholder="First Name">-->
+                          <!--<br>-->
+                          <!--<label>Last Name:</label>-->
+                          <!--<input class="w3-input w3-border" type="text" ng-model="lName" ng-disabled="!edit" placeholder="Last Name">-->
+                          <!--<br>-->
+                          <!--<label>Password:</label>-->
+                          <!--<input class="w3-input w3-border" type="password" ng-model="passw1" placeholder="Password">-->
+                          <!--<br>-->
+                          <!--<label>Repeat:</label>-->
+                          <!--<input class="w3-input w3-border" type="password" ng-model="passw2" placeholder="Repeat Password">-->
+                          <!--<br>-->
+                          <!--<button class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete">&#10004; Save Changes</button>-->
+                      <!--</form>-->
+
+
+
+
+
+                              <div class="form-group">
+                                  <!-- Button -->
+                                  <div class="col-md-offset-3 col-md-9">
+                                      <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Save Changes</button>
+
+                                  </div>
+                              </div>
+
+
+
+
+                          </form>
+                      </div>
+                  </div>
+
+
+              </div>
+          </div>
+    <%- include footer %>
+
+
+<!--<script>-->
+    <!--function previewFile() {-->
+        <!--var preview = document.querySelector('img');-->
+        <!--var file    = document.querySelector('input[type=file]').files[0];-->
+        <!--var reader  = new FileReader();-->
+
+        <!--reader.onloadend = function () {-->
+            <!--preview.src = reader.result;-->
+        <!--}-->
+
+        <!--if (file) {-->
+            <!--reader.readAsDataURL(file);-->
+        <!--} else {-->
+            <!--preview.src = "";-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
+
+
+   <script type="text/javascript" src="scripts/jquery-1.10.2.js"></script>
+   <script type="text/javascript">
+
+       //I added event handler for the file upload control to access the files properties.
+       document.addEventListener("DOMContentLoaded", init, false);
+
+       //To save an array of attachments
+       var AttachmentArray = [];
+
+       //counter for attachment array
+       var arrCounter = 0;
+
+       //to make sure the error message for number of files will be shown only one time.
+       var filesCounterAlertStatus = false;
+
+       //un ordered list to keep attachments thumbnails
+       var ul = document.createElement('ul');
+       ul.className = ("thumb-Images");
+       ul.id = "imgList";
+
+       function init() {
+           //add javascript handlers for the file upload event
+           document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+       }
+
+       //the handler for file upload event
+       function handleFileSelect(e) {
+           //to make sure the user select file/files
+           if (!e.target.files) return;
+
+           //To obtaine a File reference
+           var files = e.target.files;
+
+           // Loop through the FileList and then to render image files as thumbnails.
+           for (var i = 0, f; f = files[i]; i++) {
+
+               //instantiate a FileReader object to read its contents into memory
+               var fileReader = new FileReader();
+
+               // Closure to capture the file information and apply validation.
+               fileReader.onload = (function (readerEvt) {
+                   return function (e) {
+
+                       //Apply the validation rules for attachments upload
+                       ApplyFileValidationRules(readerEvt)
+
+                       //Render attachments thumbnails.
+                       RenderThumbnail(e, readerEvt);
+
+                       //Fill the array of attachment
+                       FillAttachmentArray(e, readerEvt)
+                   };
+               })(f);
+
+               // Read in the image file as a data URL.
+               // readAsDataURL: The result property will contain the file/blob's data encoded as a data URL.
+               // More info about Data URI scheme https://en.wikipedia.org/wiki/Data_URI_scheme
+               fileReader.readAsDataURL(f);
+           }
+
+           document.getElementById('files').addEventListener('change', handleFileSelect, false);
+       }
+
+       //To remove attachment once user click on x button
+       jQuery(function ($) {
+               $('div').on('click', '.img-wrap .close', function () {
+                   var id = $(this).closest('.img-wrap').find('img').data('id');
+
+                   //to remove the deleted item from array
+                   var elementPos = AttachmentArray.map(function (x) { return x.FileName; }).indexOf(id);
+                   if (elementPos !== -1) {
+                       AttachmentArray.splice(elementPos, 1);
+                   }
+
+                   //to remove image tag
+                   $(this).parent().find('img').not().remove();
+
+                   //to remove div tag that contain the image
+                   $(this).parent().find('div').not().remove();
+
+                   //to remove div tag that contain caption name
+                   $(this).parent().parent().find('div').not().remove();
+
+                   //to remove li tag
+                   var lis = document.querySelectorAll('#imgList li');
+                   for (var i = 0; li = lis[i]; i++) {
+                       if (li.innerHTML == "") {
+                           li.parentNode.removeChild(li);
+                       }
+                   }
+
+               });
+           }
+
+       )
+
+       //Apply the validation rules for attachments upload
+       function ApplyFileValidationRules(readerEvt)
+       {
+           //To check file type according to upload conditions
+           if (CheckFileType(readerEvt.type) == false) {
+               alert("The file (" + readerEvt.name + ") does not match the upload conditions, You can only upload jpg/png/gif files");
+               e.preventDefault();
+               return;
+           }
+
+           //To check file Size according to upload conditions
+           if (CheckFileSize(readerEvt.size) == false) {
+               alert("The file (" + readerEvt.name + ") does not match the upload conditions, The maximum file size for uploads should not exceed 300 KB");
+               e.preventDefault();
+               return;
+           }
+
+           //To check files count according to upload conditions
+           if (CheckFilesCount(AttachmentArray) == false) {
+               if (!filesCounterAlertStatus) {
+                   filesCounterAlertStatus = true;
+                   alert("You have added more than 10 files. According to upload conditions you can upload 10 files maximum");
+               }
+               e.preventDefault();
+               return;
+           }
+       }
+
+       //To check file type according to upload conditions
+       function CheckFileType(fileType) {
+           if (fileType == "image/jpeg") {
+               return true;
+           }
+           else if (fileType == "image/png") {
+               return true;
+           }
+           else if (fileType == "image/gif") {
+               return true;
+           }
+           else {
+               return false;
+           }
+           return true;
+       }
+
+       //To check file Size according to upload conditions
+       function CheckFileSize(fileSize) {
+           if (fileSize < 300000) {
+               return true;
+           }
+           else {
+               return false;
+           }
+           return true;
+       }
+
+       //To check files count according to upload conditions
+       function CheckFilesCount(AttachmentArray) {
+           //Since AttachmentArray.length return the next available index in the array,
+           //I have used the loop to get the real length
+           var len = 0;
+           for (var i = 0; i < AttachmentArray.length; i++) {
+               if (AttachmentArray[i] !== undefined) {
+                   len++;
+               }
+           }
+           //To check the length does not exceed 10 files maximum
+           if (len > 9) {
+               return false;
+           }
+           else
+           {
+               return true;
+           }
+       }
+
+       //Render attachments thumbnails.
+       function RenderThumbnail(e, readerEvt)
+       {
+           var li = document.createElement('li');
+           ul.appendChild(li);
+           li.innerHTML = ['<div class="img-wrap"> <span class="close">&times;</span>' +
+           '<img class="thumb" src="', e.target.result, '" title="', escape(readerEvt.name), '" data-id="',
+               readerEvt.name, '"/>' + '</div>'].join('');
+
+           var div = document.createElement('div');
+           div.className = "FileNameCaptionStyle";
+           li.appendChild(div);
+           div.innerHTML = [readerEvt.name].join('');
+           document.getElementById('Filelist').insertBefore(ul, null);
+       }
+
+       //Fill the array of attachment
+       function FillAttachmentArray(e, readerEvt)
+       {
+           AttachmentArray[arrCounter] =
+               {
+                   AttachmentType: 1,
+                   ObjectType: 1,
+                   FileName: readerEvt.name,
+                   FileDescription: "Attachment",
+                   NoteText: "",
+                   MimeType: readerEvt.type,
+                   Content: e.target.result.split("base64,")[1],
+                   FileSizeInBytes: readerEvt.size,
+               };
+           arrCounter = arrCounter + 1;
+       }
+   </script>
+
+   <style>
+       /*Copied from bootstrap to handle input file multiple*/
+       .btn {
+           display: inline-block;
+           padding: 6px 12px;
+           margin-bottom: 0;
+           font-size: 14px;
+           font-weight: normal;
+           line-height: 1.42857143;
+           text-align: center;
+           white-space: nowrap;
+           vertical-align: middle;
+           cursor: pointer;
+           -webkit-user-select: none;
+           -moz-user-select: none;
+           -ms-user-select: none;
+           user-select: none;
+           background-image: none;
+           border: 1px solid transparent;
+           border-radius: 4px;
+       }
+       /*Also */
+       .btn-success {
+           border: 1px solid #c5dbec;
+           background: #D0E5F5;
+           font-weight: bold;
+           color: #2e6e9e;
+       }
+
+       .fileinput-button {
+           position: relative;
+           overflow: hidden;
+       }
+
+       .fileinput-button input {
+           position: absolute;
+           top: 0;
+           right: 0;
+           margin: 0;
+           opacity: 0;
+           -ms-filter: 'alpha(opacity=0)';
+           font-size: 200px;
+           direction: ltr;
+           cursor: pointer;
+       }
+
+       .thumb {
+           height: 80px;
+           width: 100px;
+           border: 1px solid #000;
+       }
+
+       ul.thumb-Images li {
+           width: 120px;
+           float: left;
+           display: inline-block;
+           vertical-align: top;
+           height: 120px;
+       }
+
+       .img-wrap {
+           position: relative;
+           display: inline-block;
+           font-size: 0;
+       }
+
+       .img-wrap .close {
+           position: absolute;
+           top: 2px;
+           right: 2px;
+           z-index: 100;
+           background-color: #D0E5F5;
+           padding: 5px 2px 2px;
+           color: #000;
+           font-weight: bolder;
+           cursor: pointer;
+           opacity: .5;
+           font-size: 23px;
+           line-height: 10px;
+           border-radius: 50%;
+       }
+
+       .img-wrap:hover .close {
+           opacity: 1;
+           background-color: #ff0000;
+       }
+
+       .FileNameCaptionStyle {
+           font-size: 12px;
+       }
+   </style>
+
+
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+</script>
+
+

@@ -147,7 +147,12 @@
             src= <%=project.video_link%> frameborder="0" allowfullscreen>
     </iframe>
     <p name="projectID" id="projectID" hidden="false"><%=project.id%></p>
-    <button class="btn edit">Edit Project</button>
+
+    <form id="deleteform" class="form-horizontal" role="form" method="get" action="/home/getProjectEditor"}>
+        <button class="btn edit">Edit Project</button>
+        <input type="projectID" class="form-control" name="projectID" value=<%=project.ID%>>
+    </form>
+
 
     <form id="deleteform" class="form-horizontal" role="form" method="post" action="/home/deleteProject">
         <button type="submit" class="btn delete">Delete Project</button>

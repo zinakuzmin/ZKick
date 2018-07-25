@@ -364,6 +364,63 @@ exports.create = function(req, res){
 };
 
 
+
+//---------------------------------Render new project creation page -------------------
+exports.getProjectEditor = function(req, res){
+
+    var userId = req.session.userId;
+    if(userId == null){
+        res.redirect("/login");
+        return;
+    }
+
+    var projectID = req.query.projectID;
+
+
+    var getProjectsSQL = "select projects.* , s.num_of_supporters, s.donated from projects LEFT OUTER JOIN\n" +
+        " (select projectID, count(distinct(supporterID)) \n" +
+        " as num_of_supporters, sum(moneyAmount) as donated from zkick.supporters group by projectID)\n" +
+        " as s on projects.ID = s.projectID where id = ?"
+
+    var getImagesSQL = "select * from project_images where projectID = ?"
+
+
+
+    var callback = function(project){
+        console.log("from callback " + JSON.stringify(project));
+        res.render('projectEditor.ejs',{project:project });
+        // res.render("projectDetails.ejs", {project:project });
+        // res.send(projects);
+    }
+
+    db.query(getProjectsSQL, [projectID], function(err, result){
+        if (err) throw err;
+        var pending = result.length;
+        console.log("Fetched project " + projectID + " " + JSON.stringify(result[0]));
+        // res.render("projectDetails.ejs", {project:result[0] });
+        db.query(getImagesSQL, [projectID], function(err, images, fields) {
+            if (err) throw err;
+            console.log("Fetched project images" + projectID + " " + JSON.stringify(images));
+            result[0]['images'] = images;
+            if (0 === --pending) {
+                callback(result[0]);
+            }
+        });
+
+    });
+
+
+
+
+
+
+    // //fff
+    // var sql="SELECT * FROM `users` WHERE `id`='"+userId+"'";
+    // db.query(sql, function(err, result){
+    //     res.render('createProject.ejs',{message: ""});
+    // });
+};
+
 //---------------------------------Create new project----------------------------------
 exports.createproject=function(req,res){
     var userId = req.session.userId;
@@ -528,3 +585,107 @@ exports.deleteProject = function(req, res) {
 
 
 }
+
+
+
+
+
+//---------------------------------Create new project----------------------------------
+exports.updateProject=function(req,res){
+    var userId = req.session.userId;
+    if(userId == null){
+        res.redirect("/login");
+        return;
+    }
+
+
+
+    //=================
+    message = '';
+    if(req.method == "POST") {
+        var post = req.body;
+        var projectID = post.projectID;
+        var project_name = post.project_name;
+        var description = post.project_description;
+        var start_date= post.project_start_date;
+        var end_date= post.project_end_date;
+        var money_amount= post.money_amount;
+        var video_link= formatUrl(post.video_link);
+        console.log("Project id " + projectID);
+        console.log("old link "  + post.video_link);
+        console.log("new link " + video_link);
+        var location= post.location;
+        var category= post.category;
+
+        var ownerID = req.session.userId;
+        var donatedAmountOfMoney = 0;
+        var status = "opened";
+
+        if (!req.files)
+            return res.status(400).send('No files were uploaded.');
+
+        var shmulik = req.files;
+        var files = shmulik["uploaded_images[]"];
+
+        var callback = function(files){
+            for (var i = 0; i < files.length; i++){
+                var file = files[i];
+                console.log("Filename " + file.name.replace(/\s/g,''))
+                var newFileName = Date.now() + '-' + file.name.replace(/\s/g,'')
+                var is_project_cover = 0;
+                if (i == 0)
+                    is_project_cover = 1;
+                var insert_img = "INSERT INTO project_images (projectID,img_name,is_project_cover) VALUES ('" + projectID + "','" + "/" + "images/uploads/" + newFileName + "','" + is_project_cover + "')";
+                console.log(insert_img);
+
+
+                if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
+                    file.mv('public/images/uploads/'+ newFileName, function(err) {
+                        if (err) {
+                            return res.status(500).send(err);
+                        }
+                    });
+                    console.log("Filename before insert " + newFileName)
+                    var query = db.query(insert_img, function(err, result) {
+                        if (err) throw err;
+                        insertresult = result;
+                        // res.redirect('profile/'+result.insertId);
+                    });
+                } else {
+                    console.log("Incorrect file type " + file.mimetype)
+                    message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
+                    res.render('index.ejs',{message: message});
+                }
+            }
+        }
+
+
+
+        var createProjectSQL = "Update projects set ownerID = ?, name = ?, description = ?, status = ?, startDate = ?, endDate = ?, requestedAmountOfMoney = ?, donatedAmountOfMoney = ? , category = ?, video_link = ?, location = ? where id = ?";
+        var query = db.query(createProjectSQL, [ownerID, project_name, description, status, start_date, end_date, money_amount, donatedAmountOfMoney, category, video_link, location, projectID] , function(err, result) {
+            if (err) throw err;
+            callback(files);
+        });
+
+
+    } else {
+        res.render('createProject.ejs', {message:message});
+    }
+
+    res.redirect('/home/dashboard');
+
+
+
+
+    function formatUrl(url) {
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+
+        if (match && match[2].length == 11) {
+            return "https://www.youtube.com/embed/" + match[2] + "?autoplay=0";
+        } else {
+            return 'error';
+        }
+    }
+
+};
