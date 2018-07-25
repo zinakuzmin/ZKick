@@ -1,6 +1,6 @@
 <div class="column">
   <div class="card">
-    <img ng-src = "/images/uploads/{{project.images['0'].img_name}}" alt="Mike" style="width:100%">
+    <img ng-src = {{project.images['0'].img_name}} alt="Mike" style="width:100%">
     <div class="container">
       <h2>{{project.name}}</h2>
       <p class="title">{{project.category}}</p>
@@ -11,7 +11,7 @@
         <div id="myBar">10%</div>
       </div>
       <p>
-        <button class="button">Show details</button>
+        <button class="button" onclick="window.location.href='loadProject?id=42'" >{{project.ID}}</button>
       </p>
     </div>
   </div>

@@ -45,7 +45,7 @@ app.set('data', __dirname + '/data');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, 'data')));
 // var publicDir = require('path').join(__dirname,'/public');
 // app.use(express.static(publicDir));
@@ -67,15 +67,17 @@ app.post('/login', user.login);//call for login post
 app.get('/test', user.test); //call for main index page
 app.get('/home/dashboard', user.getdashboard);//call for dashboard page after login
 app.get('/home/projects', user.dashboard);//call for dashboard page after login
-app.get('/home/getprojectimage', user.getprojectimage);//call for dashboard page after login
+app.get('/home/getActiveProjectsStats', user.getActiveProjectsStats);//call for dashboard page after login
+app.get('/home/loadProject', user.loadProject);//call for dashboard page after login
+// app.get('/home/projectDetails', user.projectDetails);//call for dashboard page after login
 app.get('/home/logout', user.logout);//call for logout
 app.get('/home/profile',user.profile);//to render users profile
 app.get('/home/createProject',user.create);//to render create project page
 // app.get('/home/selectImages',user.selectimages);//to render upload images project page
 app.post('/home/createProject',user.createproject);//to create project
 // app.post('/home/uploadImages',user.uploadimages);//to upload images to project
-app.get('/home/facebook.tpl.html', function(req, res){
-    res.sendfile('C:\\oldLaptop2018\\afeka\\Internet\\Kickstarter\\ZKick\\Zkickstarter\\views\\facebook.tpl.html');
+app.get('/home/item.tpl.html', function(req, res){
+    res.sendfile('C:\\oldLaptop2018\\afeka\\Internet\\Kickstarter\\ZKick\\Zkickstarter\\views\\item.tpl.html');
 })
 ;app.get('/home/twitter.tpl.html', function(req, res){
     res.sendfile('C:\\oldLaptop2018\\afeka\\Internet\\Kickstarter\\ZKick\\Zkickstarter\\views\\twitter.tpl.html');

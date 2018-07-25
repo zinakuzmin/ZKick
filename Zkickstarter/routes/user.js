@@ -154,34 +154,7 @@ exports.dashboard = function(req, res, next){
    // var getProjectStatsSQL = "select count(distinct(supporterID)) as num_of_supporters, sum(moneyAmount) as already_donated_money from zkick.supporters where projectID = ?";
 
    var projects = [];
-    // res.render('dashboard.ejs', {user:'aaa'});
-   // projects = getAllProjectsID();
-   // console.log(projects);
 
-   // db.query(getProjectsSQL, function(err, results){
-   //     if (err) throw err;
-   //     projects = results;
-   //     console.log(JSON.stringify(projects));
-   //
-   //
-   //
-   //     for (var key in projects) {
-   //         if (projects.hasOwnProperty(key)) {
-   //             console.log("Project : " + key + " " + projects[key].id);
-   //
-   //              getProject(projects[key].id);
-   //              getProjectSupporters(projects[key].id);
-   //              getProjectImages(projects[key].id);
-   //
-   //
-   //         }
-   //     }
-   //     // res.render('dashboard.ejs', {user:results});
-   //     // db.query(getProjectsSQL, function(err, projects){
-   //     //     if (err) throw err;
-   //     //
-   //     // });
-   // });
 
     console.log(JSON.stringify(projects));
 
@@ -189,22 +162,6 @@ exports.dashboard = function(req, res, next){
     var callback = function(projects) {
         console.log("from callback " + JSON.stringify(projects));
         res.send(projects);
-        // if (responceID == 0){
-        //     console.log("from callback res 0" + JSON.stringify(projects));
-        //     getProjectImages(projects)
-        // }
-        //
-        // if (responceID == 1){
-        //     console.log("from callback res 1" + JSON.stringify(projects));
-        //     getProjectSupporters(projects)
-        // }
-        //
-        //
-        // if (responceID == 2){
-        //     console.log("from callback res 2" + JSON.stringify(projects));
-        //     res.send(projects);
-        // }
-
     }
 
     var getAllProjectsSQL = "select projects.* , s.num_of_supporters, s.donated from projects LEFT OUTER JOIN\n" +
@@ -212,7 +169,7 @@ exports.dashboard = function(req, res, next){
         " as num_of_supporters, sum(moneyAmount) as donated from zkick.supporters group by projectID)\n" +
         " as s on projects.ID = s.projectID;"
 
-    // db.query("SELECT id FROM projects", function(err, projects, fields) {
+
     db.query(getAllProjectsSQL, function(err, projects, fields) {
         var pending = projects.length;
         var allProjects = projects;
@@ -241,72 +198,8 @@ exports.dashboard = function(req, res, next){
         }
     });
 
-
-
-
-
-    var getProjectImages = function(projects){
-        var getProjectImagesSQL = "SELECT * from project_images where projectID = ?";
-
-        var pending = projects.length;
-        var allProjects = [];
-        var project = 0;
-        for (project in projects){
-            db.query(getProjectImagesSQL, [projects[project].ID], function (err, result) {
-                if (err) throw err;
-                console.log("Project ID " + projects[project].ID + " images" + JSON.stringify(result))
-                projects[project]['images'] = result;
-                if (0 === --pending) {
-                    callback(projects, 1);
-                }
-            });
-        }
-
-
-    }
-
 };
 
-
-function getAllProjectsID(){
-    var getAllProjectsSQL = "select id from projects";
-    db.query(getAllProjectsSQL,  function (err, result) {
-        if (err) throw err;
-        console.log("Projects ID " + result)
-        return result;
-    });
-}
-
-function getProject(projectID){
-    var getProjectSQL = "select * from projects where id = ?";
-    db.query(getProjectSQL, [projectID], function (err, result) {
-        if (err) throw err;
-        console.log("Project ID " + projectID + " details" + result)
-        return result;
-    });
-}
-
-
-
-// function getProjectImages(projects){
-//     var getProjectImagesSQL = "SELECT * from project_images where projectID = ?";
-//
-//     var pending = projects.length;
-//     var allProjects = [];
-//
-//     for (project in projects){
-//         db.query(getProjectImagesSQL, [projects[project].ID], function (err, result) {
-//             if (err) throw err;
-//             console.log("Project ID " + projects[project].ID + " images" + result)
-//             projects[project]['images'] = result;
-//             if (0 === --pending) {
-//                 callback(projects, 1);
-//             }
-//         });
-//     }
-//
-//
-// }
 
 
 //------------------------------------logout functionality----------------------------------------------
@@ -340,9 +233,82 @@ exports.profile = function(req, res){
 
    var sql="SELECT * FROM `users` WHERE `id`='"+userId+"'";
    db.query(sql, function(err, result){
-      res.render('profile.ejs',{data:result});
+      res.render('profile.ejs',{data:result[0]});
    });
 };
+
+
+//--------------------------------render project details --------------------------------
+exports.loadProject = function(req, res, next){
+
+    var userId = req.session.userId;
+    if(userId == null){
+        res.redirect("/login");
+        return;
+    }
+
+    var sql="SELECT * FROM `users` WHERE `id`='"+userId+"'";
+    var projectID = req.query.id;
+    var sql="SELECT * FROM projects WHERE `id`='" + req.query.id + "'";
+    // var sql="SELECT * FROM projects WHERE `id`='" + req.body.projectID + "'";
+
+    var getProjectsSQL = "select projects.* , s.num_of_supporters, s.donated from projects LEFT OUTER JOIN\n" +
+        " (select projectID, count(distinct(supporterID)) \n" +
+        " as num_of_supporters, sum(moneyAmount) as donated from zkick.supporters group by projectID)\n" +
+        " as s on projects.ID = s.projectID where id = ?"
+
+    var getImagesSQL = "select * from project_images where projectID = ?"
+
+
+
+    var callback = function(project){
+        console.log("from callback " + JSON.stringify(project));
+        res.render("projectDetails.ejs", {project:project });
+        // res.send(projects);
+    }
+
+    db.query(getProjectsSQL, [projectID], function(err, result){
+        if (err) throw err;
+        var pending = result.length;
+        console.log("Fetched project " + projectID + " " + JSON.stringify(result[0]));
+        // res.render("projectDetails.ejs", {project:result[0] });
+        db.query(getImagesSQL, [projectID], function(err, images, fields) {
+            if (err) throw err;
+            console.log("Fetched project images" + projectID + " " + JSON.stringify(images));
+            result[0]['images'] = images;
+            if (0 === --pending) {
+                callback(result[0]);
+            }
+        });
+
+    });
+
+
+
+};
+
+
+
+//
+// //--------------------------------render project details --------------------------------
+// exports.projectDetails = function(req, res){
+//
+//     var userId = req.session.userId;
+//     if(userId == null){
+//         res.redirect("/login");
+//         return;
+//     }
+//
+//     var sql="SELECT * FROM `users` WHERE `id`='"+userId+"'";
+//     var sql="SELECT * FROM projects WHERE `id`='" + 32 + "'";
+//     db.query(sql, function(err, result){
+//         res.render("projectDetails.ejs");
+//         // res.render("projectDetails.ejs", {data:result[0]});
+//     });
+// };
+
+
+
 //---------------------------------edit users details after login----------------------------------
 exports.editprofile=function(req,res){
    var userId = req.session.userId;
@@ -353,9 +319,34 @@ exports.editprofile=function(req,res){
 
    var sql="SELECT * FROM `users` WHERE `id`='"+userId+"'";
    db.query(sql, function(err, results){
-      res.render('edit_profile.ejs',{data:results});
+      res.render('edit_profile.ejs',{data:results[0]});
    });
 };
+
+
+
+
+//---------------------------------Get active projects -------------------
+exports.getActiveProjectsStats = function(req, res){
+
+    var userId = req.session.userId;
+    if(userId == null){
+        res.redirect("/login");
+        return;
+    }
+
+    // var sql = "select count(*) as projects from projects where status = 'opened' union select count(*)  from projects where status = 'closed' union select count(*)  from projects where status = 'cancelled'";
+    var sql = "select count(*) from projects where status = 'opened'";
+    db.query(sql, function(err, result){
+        // res.send({active_projects_number : result[0]['count(*)']});
+        res.send({active_projects: result[0]['count(*)']});
+    });
+};
+
+
+
+
+
 
 //---------------------------------Render new project creation page -------------------
 exports.create = function(req, res){
@@ -392,7 +383,10 @@ exports.createproject=function(req,res){
         var start_date= post.project_start_date;
         var end_date= post.project_end_date;
         var money_amount= post.money_amount;
-        var video_link= post.video_link;
+        var video_link= formatUrl(post.video_link);
+
+        console.log("old link " + post.video_link);
+        console.log("new link " + video_link);
         var location= post.location;
         var category= post.category;
 
@@ -409,12 +403,12 @@ exports.createproject=function(req,res){
         var callback = function(files, projectID){
             for (var i = 0; i < files.length; i++){
                 var file = files[i];
-                console.log("Filename " + file.name)
-                var newFileName = Date.now() + '-' + file.name
+                console.log("Filename " + file.name.replace(/\s/g,''))
+                var newFileName = Date.now() + '-' + file.name.replace(/\s/g,'')
                 var is_project_cover = 0;
                 if (i == 0)
                     is_project_cover = 1;
-                var insert_img = "INSERT INTO project_images (projectID,img_name,is_project_cover) VALUES ('" + projectID + "','" + newFileName + "','" + is_project_cover + "')";
+                var insert_img = "INSERT INTO project_images (projectID,img_name,is_project_cover) VALUES ('" + projectID + "','" + "/" + "images/uploads/" + newFileName + "','" + is_project_cover + "')";
                 console.log(insert_img);
 
 
@@ -440,7 +434,7 @@ exports.createproject=function(req,res){
 
 
 
-        var createProjectSQL = "INSERT INTO projects (ownerID, name, description, status, startDate, endDate, requestedAmountOfMoney, donatedAmountOfMoney , category, video_link, location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        var createProjectSQL = "INSERT INTO projects (ownerID, name, description, status, startDate, endDate, requestedAmountOfMoney, donatedAmountOfMoney , category, video_link, location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         var query = db.query(createProjectSQL, [ownerID, project_name, description, status, start_date, end_date, money_amount, donatedAmountOfMoney, category, video_link, location] , function(err, result) {
             if (err) throw err;
             callback(files, result.insertId);
@@ -454,3 +448,78 @@ exports.createproject=function(req,res){
     res.redirect('/home/dashboard');
 
 };
+
+
+
+//---------------------------------------------register donation------------------------------------------------------
+exports.registerDonations = function(req, res){
+    //Check if logged in
+    var userId = req.session.userId;
+    if(userId == null){
+        res.redirect("/login");
+        return;
+    }
+
+    message = '';
+    if(req.method == "POST"){
+        var post  = req.body;
+        var projectID= post.projectID;
+        var amountDonated= post.amountDonated;
+        var userID= req.session.userID;
+        var lname= req.session.userID;
+
+        var sql = "INSERT INTO supporters (projectID, supporterID, moneyAmount) VALUES (?,?,?)";
+
+
+        db.query(sql, [projectID, userID, amountDonated] , function(err, result) {
+            if (err) throw err;
+            res.send('200');
+        });
+
+
+    } else {
+        res.render('dashboard');
+    }
+};
+
+
+
+
+//---------------------------------------------delete project------------------------------------------------------
+exports.registerDonations = function(req, res){
+    //Check if logged in
+    var userId = req.session.userId;
+    if(userId == null){
+        res.redirect("/login");
+        return;
+    }
+
+    message = '';
+    if(req.method == "POST"){
+        var post  = req.body;
+        var projectID= post.projectID;
+        var lname= req.session.userID;
+
+        var sql = "delete from projects where id = ?";
+
+
+        db.query(sql, [projectID] , function(err, result) {
+            if (err) throw err;
+            res.redirect("/home/dashboard")
+        });
+
+};
+
+
+
+
+function formatUrl(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+        return "https://www.youtube.com/embed/" + match[2] + "?autoplay=0";
+    } else {
+        return 'error';
+    }
+}
