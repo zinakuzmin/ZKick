@@ -2,7 +2,7 @@ var fs = require('fs');
 var mysql = require('mysql');
 
 var shouldInitDB = true
-var shouldInsertData = true
+var shouldInsertData = false
 
 
 var createUsersTableSQL = "CREATE TABLE users " +
@@ -19,6 +19,7 @@ var createProjectsTableSQL = "CREATE TABLE projects " +
     "(ID int NOT NULL AUTO_INCREMENT,\n" +
     "    ownerID int NOT NULL,\n" +
     "    name varchar(255) NOT NULL,\n" +
+    "    description varchar(10000) ,\n" +
     "    status varchar(255) NOT NULL,\n" +
     "    startDate TIMESTAMP NOT NULL,\n" +
     "    endDate TIMESTAMP NOT NULL,\n" +
@@ -28,22 +29,21 @@ var createProjectsTableSQL = "CREATE TABLE projects " +
     "    video_link varchar(255) , \n" +
     "    location varchar(255) NOT NULL, \n" +
     "    PRIMARY KEY (ID),\n" +
-    "    FOREIGN KEY (ownerID) REFERENCES users(ID))";
+    "    FOREIGN KEY (ownerID) REFERENCES users(ID) ON DELETE CASCADE)";
 
 var createSupportersTableSQL = "CREATE TABLE supporters " +
     "(projectID int NOT NULL," +
     "supporterID int NOT NULL," +
     "moneyAmount int NOT NULL," +
-    "FOREIGN KEY (projectID) REFERENCES projects(ID)," +
-    "FOREIGN KEY (supporterID) REFERENCES users(ID))"
+    "FOREIGN KEY (projectID) REFERENCES projects(ID) ON DELETE CASCADE," +
+    "FOREIGN KEY (supporterID) REFERENCES users(ID) ON DELETE CASCADE) "
 
 var createImagesTableSQL = "CREATE TABLE project_images " +
     "(id  int not null AUTO_INCREMENT PRIMARY KEY," +
     "projectID int NOT NULL," +
     "img_name varchar(255) NOT NULL," +
-    "image_blob blob NOT NULL," +
     "is_project_cover boolean NOT NULL," +
-    "FOREIGN KEY (projectID) REFERENCES projects(ID));"
+    "FOREIGN KEY (projectID) REFERENCES projects(ID) ON DELETE CASCADE) ;"
 
 var insertSupporter1SQL = "INSERT INTO supporters (projectID, supporterID,moneyAmount) VALUES (1, 3, 100);"
 

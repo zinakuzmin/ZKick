@@ -447,6 +447,20 @@ exports.createproject=function(req,res){
 
     res.redirect('/home/dashboard');
 
+
+
+
+    function formatUrl(url) {
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+
+        if (match && match[2].length == 11) {
+            return "https://www.youtube.com/embed/" + match[2] + "?autoplay=0";
+        } else {
+            return 'error';
+        }
+    }
+
 };
 
 
@@ -464,16 +478,16 @@ exports.registerDonations = function(req, res){
     if(req.method == "POST"){
         var post  = req.body;
         var projectID= post.projectID;
-        var amountDonated= post.amountDonated;
-        var userID= req.session.userID;
-        var lname= req.session.userID;
+        var amountDonated= post.amount;
+        var userID= req.session.userId;
+
 
         var sql = "INSERT INTO supporters (projectID, supporterID, moneyAmount) VALUES (?,?,?)";
 
 
         db.query(sql, [projectID, userID, amountDonated] , function(err, result) {
             if (err) throw err;
-            res.send('200');
+            res.redirect("/home/loadProject?id=" + projectID);
         });
 
 
@@ -486,40 +500,31 @@ exports.registerDonations = function(req, res){
 
 
 //---------------------------------------------delete project------------------------------------------------------
-exports.registerDonations = function(req, res){
+exports.deleteProject = function(req, res) {
     //Check if logged in
     var userId = req.session.userId;
-    if(userId == null){
+    if (userId == null) {
         res.redirect("/login");
         return;
     }
 
     message = '';
-    if(req.method == "POST"){
-        var post  = req.body;
-        var projectID= post.projectID;
-        var lname= req.session.userID;
+    if (req.method == "POST") {
+        var post = req.body;
+        var projectID = post.projectID;
+        var lname = req.session.userID;
 
         var sql = "delete from projects where id = ?";
+        console.log(sql);
 
-
-        db.query(sql, [projectID] , function(err, result) {
+        db.query(sql, [projectID], function (err, result) {
             if (err) throw err;
             res.redirect("/home/dashboard")
         });
 
-};
-
-
-
-
-function formatUrl(url) {
-    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    var match = url.match(regExp);
-
-    if (match && match[2].length == 11) {
-        return "https://www.youtube.com/embed/" + match[2] + "?autoplay=0";
-    } else {
-        return 'error';
     }
+    ;
+
+
+
 }

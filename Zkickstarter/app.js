@@ -75,6 +75,8 @@ app.get('/home/profile',user.profile);//to render users profile
 app.get('/home/createProject',user.create);//to render create project page
 // app.get('/home/selectImages',user.selectimages);//to render upload images project page
 app.post('/home/createProject',user.createproject);//to create project
+app.post('/registerDonations',user.registerDonations);
+app.post('/home/deleteProject',user.deleteProject);
 // app.post('/home/uploadImages',user.uploadimages);//to upload images to project
 app.get('/home/item.tpl.html', function(req, res){
     res.sendfile('C:\\oldLaptop2018\\afeka\\Internet\\Kickstarter\\ZKick\\Zkickstarter\\views\\item.tpl.html');
