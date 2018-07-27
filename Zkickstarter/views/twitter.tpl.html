@@ -11,9 +11,10 @@
       <div id="myProgress">
         <div id="myBar">10%</div>
       </div>
-      <p>
-        <button class="button" value="{{project.ID}}" onclick="window.location.href='loadProject?id=1'"></button>
-      </p>
+	  <form id="editform" class="form-horizontal" role="form" method="get" action="/loadProject"}>
+         <button class="button">Show details</button>
+        <input type="projectID" class="form-control" name="id" value={{project.ID}}>
+    </form>
     </div>
   </div>
 </div>

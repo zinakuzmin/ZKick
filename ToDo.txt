@@ -115,3 +115,16 @@ ___________________________
 
 Func to receive specific project
 Func to receive all projects
+
+
+____________________________
+
+
+Progress bar v
+Countdown v
+Permissions to edit/delete v
+Permission to create v
+Permission to make donation v
+Creation/Editor - prettify
+Viewer - prettify
+

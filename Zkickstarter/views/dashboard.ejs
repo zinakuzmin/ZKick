@@ -1,15 +1,13 @@
-    <!--<html lang="en">-->
-    <!--<html ng-app="app">-->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
-    <!--<link rel='stylesheet' href='..view//css/base.css' />-->
-    <!--<script data-require="angular.js@*" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>-->
-    <!--<link rel="stylesheet" href="../view/css/style.css" />-->
-    <!--<script src="script.js"></script>-->
+
     <html ng-app="app">
     <head>
-        //<meta charset="UTF-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sample Site</title>
+        <meta name="description" content="Zkick dashboard">
+        <meta name="author" content="@Zina">
+
+
+        <title>ZKickstarter</title>
         <!--<link rel='stylesheet' href='..view//css/base.css' />-->
         <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
         <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
@@ -17,75 +15,78 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
         <script type="text/javascript" src="/script.js"></script>
+        <script type="text/javascript" src="/isUserLoggedIn.js"></script>
+
+
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/portfolio-item.css" rel="stylesheet">
 
     </head>
     <body >
+    <%- include header %>
     <div class="container" ng-controller="DashboardController">
-        <!-- Static navbar -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="/home/dashboard">Home</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li> <input type="text" placeholder="Search.."></li>
-                        <li><a href="/home/logout">Logout</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div><!--/.container-fluid -->
-        </nav>
 
+        <!--&lt;!&ndash; Navigation &ndash;&gt;-->
+        <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">-->
+            <!--<div class="container">-->
+                <!--<a class="navbar-brand" href="#">Zkick - fulfill your dream</a>-->
+                <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+                    <!--<span class="navbar-toggler-icon"></span>-->
+                <!--</button>-->
+                <!--<div class="collapse navbar-collapse" id="navbarResponsive">-->
+                    <!--<ul class="navbar-nav ml-auto">-->
+                        <!--<li class="nav-item active">-->
+                            <!--<a class="nav-link" href="/">Home-->
+                                <!--<span class="sr-only">(current)</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="nav-item">-->
+                            <!--<a class="nav-link" id="my_profile_button" href="/profile">View Profile</a>-->
+                        <!--</li>-->
+                        <!--<li class="nav-item">-->
+                            <!--<a class="nav-link" id="logout_button" href="/logout">Logout</a>-->
+                        <!--</li>-->
+                        <!--<li class="nav-item">-->
+                            <!--<a class="nav-link" id="login_button" href="/login">Login</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</nav>-->
 
-        <!--<button type="button" onclick="loadDoc()">Request data</button>-->
-        <button type="button">Request data</button>
-
-        <p type="active" id="active_projects"></p>
-        <p id="succeeded_projects"></p>
-        <p id="cancelled_projects"></p>
-
-
-
-        <script>
-            $(document).ready(function(){
-                $("#active_projects").load("getActiveProjectsStats", function (data, status) {
-                    ////callback function implementation
-                    document.getElementById("active_projects").innerHTML = "Active projects " + data.active_projects;
-                });
-                // $("button").click(function(){
-                //     $.get("getActiveProjectsStats", function(data, status){
-                //         // alert("Data: " + data + "\nStatus: " + status);
-                //         document.getElementById("active_projects").innerHTML = "Active projects " + data.active_projects;
-                //     });
-                // });
-            });
-        </script>
-
-        <!--<script>-->
-            <!--// function loadDoc() {-->
-            <!--var xhttp = new XMLHttpRequest();-->
-            <!--xhttp.onreadystatechange = function() {-->
-                <!--if (this.readyState == 4 && this.status == 200) {-->
-                    <!--document.getElementById("active_projects").innerHTML = "Active projects " + this.responseText.active_projects_number-->
-                    <!--// document.getElementById("succeeded_projects").innerHTML = "Succeeded projects " + this.responseText['activeProjects'][0].projects;-->
-                    <!--// document.getElementById("cancelled_projects").innerHTML = "Cancelled projects " + this.responseText['activeProjects'][0].projects;-->
-                <!--}-->
-            <!--};-->
-            <!--xhttp.open("GET", "getActiveProjectsStats", false);-->
-            <!--xhttp.send();-->
-            <!--// }-->
-        <!--</script>-->
+        <!--<div hidden="true">-->
+            <!--<p id="is_admin"></p>-->
+            <!--<p id="current_user_id"></p>-->
+        <!--</div>-->
 
 
         <!-- Main component for a primary marketing message or call to action -->
           <div class="jumbotron">
-            <h1>Welcome</h1>
-            <p>Hello Dashboard</p>
-            <p>
-              <a class="btn btn-lg btn-primary" href="/home/profile" role="button">Profile view »</a>
-            </p>
+
+
+              <!--Show projects statistics-->
+              <div class="row">
+                  <div class="column" >
+                      <p id="active"><strong>Live Projects : </strong><span id="active_projects"></span></p>
+                  </div>
+                  <div class="column" >
+                      <p id="closed"><strong>Funded Projects : </strong><span id="closed_projects"></span></p>
+                  </div>
+                  <div class="column" >
+                      <p id="cancelled"><strong>Failed Projects : </strong><span id="cancelled_projects"></span></p>
+                  </div>
+              </div>
+
+
+
+
+
+            <h1>Welcome <span id="userName"></span></h1>
               <p>
-                  <a class="btn btn-lg btn-primary" href="/home/createProject" role="button">Create new project »</a>
+                  <a class="btn btn-lg btn-primary" href="/createProject" role="button">Start new project »</a>
               </p>
           </div>
 
@@ -94,14 +95,63 @@
     </div>
 
 
-    <!--<div ng-controller="ItemController">-->
-        <!--<project ng-view></project>-->
-    <!--</div>-->
+    <%- include footer %>
+
+
         </body>
     </html>
 
 
+
+    <script>
+
+
+        $.ajax(
+            {
+                type:'GET',
+                url:'/getActiveProjectsStats',
+                success: function(data){
+                    document.getElementById("active_projects").innerHTML = data.active_projects
+                }
+            }
+        );
+
+
+        $.ajax(
+            {
+                type:'GET',
+                url:'/getClosedProjectsStats',
+                success: function(data){
+                    document.getElementById("closed_projects").innerHTML = data.closed_projects
+                }
+            }
+        );
+
+
+        $.ajax(
+            {
+                type:'GET',
+                url:'/getCancelledProjectsStats',
+                success: function(data){
+                    document.getElementById("cancelled_projects").innerHTML = data.cancelled_projects
+                }
+            }
+        );
+    </script>
+
     <style>
+
+        body {
+            padding-top: 54px;
+        }
+
+        @media (min-width: 992px) {
+            body {
+                padding-top: 56px;
+            }
+        }
+
+
         html {
             box-sizing: border-box;
         }
@@ -126,6 +176,8 @@
 
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            width: 100%
+            min-height: 200px;
         }
 
         .container {
@@ -159,18 +211,20 @@
         }
 
         #myProgress {
-            width: 100%;
+            /*width: 100%;*/
             background-color: #ddd;
         }
 
         #myBar {
-            width: 10%;
+            /*width: 10%;*/
             height: 20px;
             background-color: #4CAF50;
             text-align: center;
             line-height: 20px;
             color: white;
         }
+
+
 
     </style>
 
@@ -193,37 +247,3 @@
         }
     </script>
 
-
-
-
-    <!--countdown script-->
-    <!--<script>-->
-        <!--// Set the date we're counting down to-->
-        <!--var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();-->
-
-        <!--// Update the count down every 1 second-->
-        <!--var x = setInterval(function() {-->
-
-            <!--// Get todays date and time-->
-            <!--var now = new Date().getTime();-->
-
-            <!--// Find the distance between now an the count down date-->
-            <!--var distance = countDownDate - now;-->
-
-            <!--// Time calculations for days, hours, minutes and seconds-->
-            <!--var days = Math.floor(distance / (1000 * 60 * 60 * 24));-->
-            <!--var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));-->
-            <!--var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));-->
-            <!--//var seconds = Math.floor((distance % (1000 * 60)) / 1000);-->
-
-            <!--// Output the result in an element with id="demo"-->
-            <!--document.getElementById("countdown").innerHTML = days + "d " + hours + "h "-->
-                <!--+ minutes + "m " ;// + seconds + "s ";-->
-
-            <!--// If the count down is over, write some text-->
-            <!--if (distance < 0) {-->
-                <!--clearInterval(x);-->
-                <!--document.getElementById("demo").innerHTML = "EXPIRED";-->
-            <!--}-->
-        <!--}, 1000);-->
-    <!--</script>-->

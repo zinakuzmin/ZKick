@@ -1,38 +1,38 @@
-<html lang="en">
-<head>
-    //<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sample Site</title>
-     <link rel='stylesheet' href='..view//css/base.css' />
-     <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-</head>
-<body>
-  <div class="container">
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-              <!--<div class="dropdown">-->
-                  <!--<button class="dropbtn">Dropdown-->
-                      <!--<i class="fa fa-caret-down"></i>-->
-                  <!--</button>-->
-                  <!--<div class="dropdown-content">-->
-                      <!--<a href="#">View profile</a>-->
-                      <!--<a href="#">My Projects</a>-->
-                  <!--</div>-->
-              <!--</div>-->
-              <li class="active"><a href="/home/dashboard">Home</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-              <li> <input type="text" placeholder="Search.."></li>
-            <li><a href="/home/logout">Logout</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div><!--/.container-fluid -->
-    </nav>
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--//<meta charset="UTF-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!--<title>Sample Site</title>-->
+     <!--<link rel='stylesheet' href='..view//css/base.css' />-->
+     <!--&lt;!&ndash;<link rel='stylesheet' href='/stylesheets/style.css' />&ndash;&gt;-->
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
+   <!--<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+  <!--<div class="container">-->
+    <!--&lt;!&ndash; Static navbar &ndash;&gt;-->
+    <!--<nav class="navbar navbar-default">-->
+      <!--<div class="container-fluid">-->
+        <!--<div id="navbar" class="navbar-collapse collapse">-->
+          <!--<ul class="nav navbar-nav">-->
+              <!--&lt;!&ndash;<div class="dropdown">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<button class="dropbtn">Dropdown&ndash;&gt;-->
+                      <!--&lt;!&ndash;<i class="fa fa-caret-down"></i>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<div class="dropdown-content">&ndash;&gt;-->
+                      <!--&lt;!&ndash;<a href="#">View profile</a>&ndash;&gt;-->
+                      <!--&lt;!&ndash;<a href="#">My Projects</a>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--<li class="active"><a href="/home/dashboard">Home</a></li>-->
+          <!--</ul>-->
+          <!--<ul class="nav navbar-nav navbar-right">-->
+              <!--<li> <input type="text" placeholder="Search.."></li>-->
+            <!--<li><a href="/home/logout">Logout</a></li>-->
+          <!--</ul>-->
+        <!--</div>&lt;!&ndash;/.nav-collapse &ndash;&gt;-->
+      <!--</div>&lt;!&ndash;/.container-fluid &ndash;&gt;-->
+    <!--</nav>-->
 
   <!--<div class="topnav">-->
       <!--<a class="active" href="#home">Home</a>-->
@@ -47,4 +47,40 @@
       <!--<p>List Of projects</p>-->
   <!--</div>-->
 
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Zkick - fulfill your dream</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="my_profile_button" href="/profile">View Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="logout_button" href="/logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <!--<a class="glyphicon glyphicon-log-in" id="login_button" href="/login"> Login</a>-->
+                    <!--<a class="nav-link" id="login_button" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>-->
+                    <a class="nav-link" id="login_button" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div hidden="true">
+    <p id="is_admin"></p>
+    <p id="current_user_id"></p>
+</div>
       

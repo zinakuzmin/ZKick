@@ -1,19 +1,25 @@
 <div class="column">
   <div class="card">
-    <img src="C:\OldStuff\pictures\2013_BugHunt4.0\2013_04_10_9999_23.jpg" alt="Mike" style="width:100%">
+    <img ng-src = {{project.images['0'].img_name}} alt="Img" style="width:100%">
     <div class="container">
-      <h2>Donate money for homeless cockroarches</h2>
-      <p class="title">Community project</p>
-      <p>{{user.description}}</p>
-      <p>example@example.com</p>
-      <i><span ng-bind="user.name"></span></i> - Twitter
-      <p id="countdown"></p>
-      <div id="myProgress">
-        <div id="myBar">10%</div>
-      </div>
-      <p>
-        <button class="button">Contact</button>
-      </p>
+      <h2>{{project.name}}</h2>
+      <p class="title">{{project.category}}</p>
+      <p id="location">{{project.location}}</p>
+	  <i><span ng-bind="project.description"></span></i>
+      <p id="countdown">{{project.timeRemaining}}</p>
+      <div id="myProgress" ">
+        <div id="myBar" style="width:{{project.percentageToShow}};">{{project.percentageText}}</div>
+      </div> 
+	  <div style="display: none;" >
+		<p id="endDate"></p>
+		<p id="requestedAmount">{{project.requestedAmountOfMoney}}</p>
+		<p id="donatedAmount">{{project.requestedAmountOfMoney}}</p>
+	  </div>
+	  <form id="editform" class="form-horizontal" role="form" method="get" action="/loadProject"}>
+         <button class="button"> Show details</button>
+        <input type="projectID" class="form-control" name="id" hidden="true" value={{project.ID}}>
+    </form>
     </div>
   </div>
 </div>
+

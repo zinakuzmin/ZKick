@@ -25,20 +25,61 @@
 
 
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zkick dashboard">
+    <meta name="author" content="@Zina">
+
+
+    <title>ZKickstarter</title>
+    <!--<link rel='stylesheet' href='..view//css/base.css' />-->
+    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+
+    <script type="text/javascript" src="/script.js"></script>
+    <script type="text/javascript" src="/isUserLoggedIn.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/portfolio-item.css" rel="stylesheet">
+
+
 </head>
 
 
 
 
 <body>
+<%- include header %>
+<!--<div class="container">-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+            <!--<img class="img-responsive" ng-repeat="image in images" ng-src={{image.img_name}} alt={{image.img_name}} />-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-9 col-sm-9 col-xs-12">
-            <img class="img-responsive" ng-repeat="image in images" ng-src={{image.img_name}} alt={{image.img_name}} />
-        </div>
+
+
+<div class="row">
+    <div class="column" ng-repeat="image in images">
+        <img class="img-responsive"  ng-src={{image.img_name}} alt={{image.img_name}} />
     </div>
 </div>
+
+
 
 
 <div class="container">
@@ -88,13 +129,25 @@
                         <span class="review-no">41 reviews</span>
                     </div>
                     <p class="product-description"><%=project.description%></p>
-                    <h4 class="price">Requested: <span><%=project.requestedAmountOfMoney%></span></h4>
-                    <h4 class="donation">Donated: <span><%=project.donated%></span></h4>
+                    <h4 class="requested">Requested: <span id="required_amount_span"><%=project.requestedAmountOfMoney%></span></h4>
+                    <h4 class="donated">Donated: <span id="donated_span"><%=project.donated%></span></h4>
                     <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
                     <p id="countdown"></p>
+
                     <div id="myProgress" style="width: 100%; background-color: #ddd;">
                         <div id="myBar" style="width: 50%; height: 20px; background-color: #4CAF50; text-align: center; line-height: 20px; color: white;">10%</div>
                     </div>
+
+                    <div hidden="false">
+                        <p id="end_date"><%=project.endDate%></p>
+                        <p id="is_admin"></p>
+                        <p id="current_user_id"></p>
+                        <p id="project_owner_id"><%=project.ownerID%></p>
+                    </div>
+
+
+
+
                     <h5 class="sizes">sizes:
                         <span class="size" data-toggle="tooltip" title="small">s</span>
                         <span class="size" data-toggle="tooltip" title="medium">m</span>
@@ -109,18 +162,22 @@
 
 
                     <form class="form-horizontal" role="form" method="post" action="/registerDonations" onSubmit="return checkblank(this);">
-                        <div class="form-group" hidden="false">
+                        <div class="form-group" >
                             <label for="amount" class="col-md-3 control-label">Support us</label>
-                            <div class="col-md-9">
-                                <input type="projectID" class="form-control" name="projectID" value=<%=project.ID%>>
+                            <div class="col-md-9" >
+                                <input type="number" class="form-control" name="amount" >
+                            </div>
+                            <div hidden="true">
+                                <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="amount" class="col-md-3 control-label">Support us</label>
-                            <div class="col-md-9">
-                                <input type="number" class="form-control" name="amount" placeholder="10">
-                            </div>
-                        </div>
+
+                        <!--<div class="form-group">-->
+                            <!--<label for="amount" class="col-md-3 control-label">Support us</label>-->
+                            <!--<div class="col-md-9">-->
+                                <!--<input type="number" class="form-control" name="amount" placeholder="10">-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <div class="form-group">
                             <!-- Button -->
                             <div class="col-md-offset-3 col-md-9">
@@ -148,16 +205,25 @@
     </iframe>
     <p name="projectID" id="projectID" hidden="false"><%=project.id%></p>
 
-    <form id="deleteform" class="form-horizontal" role="form" method="get" action="/home/getProjectEditor"}>
+    <form id="editform" class="form-horizontal" role="form" method="get" action="/getProjectEditor" style="display: none;">
         <button class="btn edit">Edit Project</button>
-        <input type="projectID" class="form-control" name="projectID" value=<%=project.ID%>>
+        <div class="col-md-9" hidden="true">
+            <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
+        </div>
     </form>
 
 
-    <form id="deleteform" class="form-horizontal" role="form" method="post" action="/home/deleteProject">
+    <form id="deleteform" class="form-horizontal" role="form" method="post" action="/deleteProject" style="display: none;">
         <button type="submit" class="btn delete">Delete Project</button>
-        <div class="col-md-9">
-            <input type="projectID" class="form-control" name="projectID" value=<%=project.ID%>>
+        <div class="col-md-9" hidden="true">
+            <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
+        </div>
+    </form>
+
+    <form id="cancelform" class="form-horizontal" role="form" method="post" action="/cancelProject" style="display: none;">
+        <button type="submit" class="btn cancel">Cancel Project</button>
+        <div class="col-md-9" hidden="true">
+            <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
         </div>
     </form>
 
@@ -168,8 +234,67 @@
 
 
 </div>
+
+<%- include footer %>
 </body>
 </html>
+
+
+
+<script>
+
+
+    $.ajax(
+        {
+            type:'GET',
+            url:'/getUserDetails',
+            success: function(response){
+                if (response.data != 'undefined'){
+                    document.getElementById("current_user_id").innerHTML = response.data.id
+                    document.getElementById("is_admin").innerHTML = response.data.is_admin
+                    hideAdminButtons();
+                }
+            }
+        }
+    );
+</script>
+
+<script>
+    function hideAdminButtons(){
+        var userID = document.getElementById("current_user_id").textContent;
+        var ownerID = document.getElementById("project_owner_id").textContent;
+        var is_admin = document.getElementById("is_admin").textContent;
+
+        if (userID != "undefined"){
+            if (is_admin != "undefined" ){
+                if (is_admin == 1 || ownerID == userID){
+                    document.getElementById("deleteform").style.display = 'block'
+                    document.getElementById("editform").style.display = 'block'
+                    document.getElementById("cancelform").style.display = 'block'
+                }
+            }
+
+        }
+
+
+    }
+
+</script>
+
+
+<script>
+    var percentage = 0;
+    var donated = document.getElementById("donated_span").textContent;
+    var required = document.getElementById("required_amount_span").textContent;
+    if (donated && required){
+        if (!isNaN(donated) && !isNaN(required))
+            percentage = (Number(donated) * 100) / Number(required);
+    }
+    document.getElementById("myBar").innerHTML = Math.round(percentage) + "%";
+    if (percentage < 100)
+        document.getElementById("myBar").style.width = Math.round(percentage) + "%";
+    document.getElementById("myBar").style.width = 100 + "%";
+</script>
 
 <script type="text/JavaScript">
     function deleteProject() {
@@ -400,8 +525,8 @@
 
 <script>
 // Set the date we're counting down to
-// var lastDate = document.projects.endDate;
-var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+var date = document.getElementById("end_date").textContent
+var countDownDate = new Date(date).getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -429,3 +554,9 @@ document.getElementById("demo").innerHTML = "EXPIRED";
 }
 }, 1000);
 </script>
+
+
+<!--<script>-->
+    <!--var admin -->
+    <!---->
+<!--</script>-->

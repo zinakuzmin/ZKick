@@ -5,14 +5,26 @@ var shouldInitDB = true
 var shouldInsertData = false
 
 
-var createUsersTableSQL = "CREATE TABLE users " +
-    "(ID int NOT NULL AUTO_INCREMENT,\n" +
-    "    username varchar(255) NOT NULL UNIQUE,\n" +
-    "    lastName varchar(255) NOT NULL,\n" +
-    "    firstName varchar(255) NOT NULL,\n" +
-    "    password varchar(255) NOT NULL,\n" +
-    "    Age int,\n" +
-    "    PRIMARY KEY (ID))";
+// var createUsersTableSQL = "CREATE TABLE users " +
+//     "(ID int NOT NULL AUTO_INCREMENT,\n" +
+//     "    username varchar(255) NOT NULL UNIQUE,\n" +
+//     "    lastName varchar(255) NOT NULL,\n" +
+//     "    firstName varchar(255) NOT NULL,\n" +
+//     "    password varchar(255) NOT NULL,\n" +
+//     "    Age int, \n" +
+//     "    is_admin boolean NOT NULL DEFAULT 0, \n"
+//     "    PRIMARY KEY (ID))";
+
+
+var createUsersTableSQL = "CREATE TABLE users\n" +
+    "    (ID int NOT NULL AUTO_INCREMENT,\n" +
+    "        username varchar(255) NOT NULL UNIQUE,\n" +
+    "        lastName varchar(255) NOT NULL,\n" +
+    "        firstName varchar(255) NOT NULL,\n" +
+    "        password varchar(255) NOT NULL,\n" +
+    "        Age int, \n" +
+    "        is_admin boolean NOT NULL DEFAULT 0,\n" +
+    "        PRIMARY KEY (ID));"
 
 
 var createProjectsTableSQL = "CREATE TABLE projects " +

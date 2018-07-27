@@ -1,9 +1,35 @@
 <html lang="en">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zkick dashboard">
+    <meta name="author" content="@Zina">
+
+
+    <title>ZKickstarter</title>
+    <!--<link rel='stylesheet' href='..view//css/base.css' />-->
+    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="/script.js"></script>
+    <script type="text/javascript" src="/isUserLoggedIn.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/portfolio-item.css" rel="stylesheet">
+
+</head>
+<body >
+
    <%- include header %>
    <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Create your project</h1>
+        <h1 class="col-md-9 control-label">Create your project</h1>
 
           <div class="container col-sm-20" id="mainform">
               <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-24 col-md-offset-2 col-sm-8 col-sm-offset-2">
@@ -15,16 +41,7 @@
                       </div>
                       <!--<div class="input-group" >-->
                       <div class="panel-body" >
-                          <form class="form-horizontal" role="form" method="post" action="/home/createProject" enctype="multipart/form-data">
-                          <!--<form class="form-horizontal" role="form" method="post" action="/home/createProject" onSubmit="return checkblank(this);">-->
-                          <!--<form class="form-horizontal"  role="form"  method="post"  action="/createProject" onSubmit="return checkblank(this);">-->
-                              <% if (message.length > 0) { %>
-                              <div class="alert alert-success col-sm-12"><%= message %></div>
-                              <% } %>
-                              <div id="signupalert" style="display:none" class="alert alert-danger">
-                                  <p>Error:</p>
-                                  <span></span>
-                              </div>
+                          <form class="form-horizontal" role="form" method="post" action="/createProject" enctype="multipart/form-data">
 
                               <div class="form-group">
                                   <label for="project_name" class="col-md-3 control-label">Project Name</label>
@@ -33,7 +50,7 @@
                                   </div>
                               </div>
                               <div class="form-group">
-                                  <label for="project_description" class="col-md-3 control-label">Project description</label>
+                                  <label for="project_description" class="col-md-9 control-label">Project description</label>
                                   <div class="col-md-9">
                                       <!--<input type="text" class="form-control" name="project_description">-->
                                       <!--<textarea name="project_description" rows="10" cols="30">Describe your project</textarea>-->
@@ -41,9 +58,9 @@
                                   </div>
                               </div>
                               <div class="form-group">
-                                  <label for="money_amount" class="col-md-3 control-label">Requested Money Amount</label>
+                                  <label for="money_amount" class="col-md-9 control-label">Requested Money Amount</label>
                                   <div class="col-md-9">
-                                      <input type="age" class="form-control" name="money_amount" >
+                                      <input type="number" class="form-control" name="money_amount" >
                                   </div>
                               </div>
                               <div class="form-group">
@@ -61,20 +78,16 @@
 
                               <div class="form-group">
                                   <fieldset>
-                                      <legend>Choose project dates</legend>
+                                      <legend class="col-md-9 control-label">Choose project dates</legend>
 
                                       <div>
-                                          <label for="start">Start</label>
-                                          <input type="date" id="start" name="project_start_date"
-                                                 value="2018-07-22"
-                                                 min="2018-01-01" max="2018-12-31" />
+                                          <label class="col-md-2 control-label" for="start">Start : </label>
+                                          <input type="date" id="start" name="project_start_date" value="2018-07-27"  min="2018-01-01" max="2018-12-31" />
                                       </div>
 
                                       <div>
-                                          <label for="end">End</label>
-                                          <input type="date" id="end" name="project_end_date"
-                                                 value="2018-07-29"
-                                                 min="2018-01-01" max="2018-12-31" />
+                                          <label class="col-md-2 control-label" for="end">End : </label>
+                                          <input type="date" id="end" name="project_end_date" value="2018-07-31" min="2018-01-01" max="2018-12-31" />
                                       </div>
 
                                   </fieldset>
@@ -82,7 +95,7 @@
                               </div>
 
                               <div class="form-group">
-                                  <label for="categories" class="col-md-3 control-label">Choose project category</label>
+                                  <label for="categories" class="col-md-9 control-label">Choose project category</label>
                                   <div class="col-md-9">
                                       <input list="categories" name="category">
                                       <datalist id="categories">
@@ -97,11 +110,6 @@
                               </div>
 
                               <div class="form-group">
-                                  <!--<label for="image" class="col-md-3 control-label">Image upload</label>-->
-                                  <!--<div class="col-md-9">-->
-                                      <!--<input type="file" onchange="previewFile()"><br>-->
-                                      <!--<img src="" height="200" alt="Image preview...">-->
-                                  <!--</div>-->
                                   <div>
                                       <label style="font-size: 14px;">
                                           <span style='color:navy;font-weight:bold'>Attachment Instructions :</span>
@@ -113,15 +121,12 @@
                                           <li>
                                               Maximum number of allowed files 10 with 300 KB for each
                                           </li>
-                                          <li>
-                                              you can select files from different folders
-                                          </li>
                                       </ul>
                                       <!--To give the control a modern look, I have applied a stylesheet in the parent span.-->
                                       <span class="btn btn-success fileinput-button">
                                           <span>Select Attachment</span>
                                              <!--<input class="form-control" type="file" name="uploaded_images[]" multiple accept="image/jpeg, image/png, image/gif"/>-->
-                                             <input  type="file" name="uploaded_images[]" multiple accept="image/jpeg, image/png, image/gif"/>
+                                             <input  type="file" name="files[]" id="files" multiple accept="image/jpeg, image/png, image/gif"/>
                                              <!--<input type="file" name="imgUploader" multiple accept="image/jpeg, image/png, image/gif"/><br />-->
                                              <!--<input type="file" name="files[]" id="files" multiple accept="image/jpeg, image/png, image/gif,"><br />-->
                                              <!--<input type="file" name="fullfiles[]" id="fullfiles" multiple accept="image/jpeg, image/png, image/gif,"><br />-->
@@ -130,34 +135,12 @@
                                   </div>
                               </div></div>
 
-                      <!--<button class="w3-btn w3-green w3-ripple" ng-click="editUser('new')">&#9998; Create New User</button>-->
-
-                      <!--<form ng-hide="hideform">-->
-                          <!--<h3 ng-show="edit">Create New User:</h3>-->
-                          <!--<h3 ng-hide="edit">Edit User:</h3>-->
-                          <!--<label>First Name:</label>-->
-                          <!--<input class="w3-input w3-border" type="text" ng-model="fName" ng-disabled="!edit" placeholder="First Name">-->
-                          <!--<br>-->
-                          <!--<label>Last Name:</label>-->
-                          <!--<input class="w3-input w3-border" type="text" ng-model="lName" ng-disabled="!edit" placeholder="Last Name">-->
-                          <!--<br>-->
-                          <!--<label>Password:</label>-->
-                          <!--<input class="w3-input w3-border" type="password" ng-model="passw1" placeholder="Password">-->
-                          <!--<br>-->
-                          <!--<label>Repeat:</label>-->
-                          <!--<input class="w3-input w3-border" type="password" ng-model="passw2" placeholder="Repeat Password">-->
-                          <!--<br>-->
-                          <!--<button class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete">&#10004; Save Changes</button>-->
-                      <!--</form>-->
-
-
-
-
-
                               <div class="form-group">
                                   <!-- Button -->
-                                  <div class="col-md-offset-3 col-md-9">
-                                      <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Submit</button>
+                                  <!--<div class="col-md-offset-3 col-md-9">-->
+                                  <div>
+                                      <!--<button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> Create Project</button>-->
+                                      <button id="btn-signup" type="submit" class="btn btn-primary btn-lg"><i class="icon-hand-right"></i> Create Project</button>
 
                                   </div>
                               </div>
@@ -173,28 +156,13 @@
               </div>
           </div>
     <%- include footer %>
+</body>
+</html>
 
 
-<!--<script>-->
-    <!--function previewFile() {-->
-        <!--var preview = document.querySelector('img');-->
-        <!--var file    = document.querySelector('input[type=file]').files[0];-->
-        <!--var reader  = new FileReader();-->
-
-        <!--reader.onloadend = function () {-->
-            <!--preview.src = reader.result;-->
-        <!--}-->
-
-        <!--if (file) {-->
-            <!--reader.readAsDataURL(file);-->
-        <!--} else {-->
-            <!--preview.src = "";-->
-        <!--}-->
-    <!--}-->
-<!--</script>-->
 
 
-   <script type="text/javascript" src="scripts/jquery-1.10.2.js"></script>
+   <script type="text/javascript" src="/jquery-1.10.2.js"></script>
    <script type="text/javascript">
 
        //I added event handler for the file upload control to access the files properties.
@@ -493,10 +461,5 @@
    </style>
 
 
-<script>
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-</script>
 
 

@@ -58,32 +58,39 @@ app.use(session({
             }))
  
 // development only
- 
+
+
 app.get('/', routes.index);//call for main index page
+// app.get('/', user.getdashboard);//call for main index page
 app.get('/signup', user.signup);//call for signup page
 app.post('/signup', user.signup);//call for signup post 
-app.get('/login', routes.index);//call for login page
+app.get('/login', routes.login);//call for login page
+// app.get('/login', routes.index);//call for login page
 app.post('/login', user.login);//call for login post
-app.get('/test', user.test); //call for main index page
-app.get('/home/dashboard', user.getdashboard);//call for dashboard page after login
-app.get('/home/projects', user.dashboard);//call for dashboard page after login
-app.get('/home/getActiveProjectsStats', user.getActiveProjectsStats);//call for dashboard page after login
-app.get('/home/loadProject', user.loadProject);//call for dashboard page after login
+app.get('/dashboard', user.getdashboard);//call for dashboard page after login
+app.get('/projects', user.dashboard);//call for dashboard page after login
+// app.get('/home/projects', user.dashboard);//call for dashboard page after login
+app.get('/getActiveProjectsStats', user.getActiveProjectsStats);//call for dashboard page after login
+app.get('/getClosedProjectsStats', user.getClosedProjectsStats);//call for dashboard page after login
+app.get('/getCancelledProjectsStats', user.getCancelledProjectsStats);//call for dashboard page after login
+app.get('/loadProject', user.loadProject);//call for dashboard page after login
 // app.get('/home/projectDetails', user.projectDetails);//call for dashboard page after login
-app.get('/home/logout', user.logout);//call for logout
-app.get('/home/profile',user.profile);//to render users profile
-app.get('/home/createProject',user.create);//to render create project page
-app.get('/home/getProjectEditor',user.getProjectEditor);//to render create project page
+app.get('/logout', user.logout);//call for logout
+app.get('/profile',user.profile);//to render users profile
+app.get('/createProject',user.create);//to render create project page
+app.get('/getProjectEditor',user.getProjectEditor);//to render create project page
+app.get('/getUserDetails',user.getUserDetails);//to render create project page
 // app.get('/home/selectImages',user.selectimages);//to render upload images project page
-app.post('/home/createProject',user.createproject);//to create project
+app.post('/createProject',user.createproject);//to create project
 app.post('/registerDonations',user.registerDonations);
-app.post('/home/deleteProject',user.deleteProject);
-app.post('/home/updateProject',user.updateProject);
+app.post('/deleteProject',user.deleteProject);
+app.post('/cancelProject',user.cancelProject);
+app.post('/updateProject',user.updateProject);
 // app.post('/home/uploadImages',user.uploadimages);//to upload images to project
-app.get('/home/item.tpl.html', function(req, res){
+app.get('/item.tpl.html', function(req, res){
     res.sendfile('C:\\oldLaptop2018\\afeka\\Internet\\Kickstarter\\ZKick\\Zkickstarter\\views\\item.tpl.html');
-})
-;app.get('/home/twitter.tpl.html', function(req, res){
+});
+app.get('/home/twitter.tpl.html', function(req, res){
     res.sendfile('C:\\oldLaptop2018\\afeka\\Internet\\Kickstarter\\ZKick\\Zkickstarter\\views\\twitter.tpl.html');
 });
 //Middleware
