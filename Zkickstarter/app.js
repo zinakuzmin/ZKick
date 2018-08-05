@@ -79,6 +79,7 @@ app.get('/logout', user.logout);//call for logout
 app.get('/profile',user.profile);//to render users profile
 app.get('/createProject',user.create);//to render create project page
 app.get('/getProjectEditor',user.getProjectEditor);//to render create project page
+app.get('/getProjectImages',user.getProjectImages);//to render create project page
 app.get('/getUserDetails',user.getUserDetails);//to render create project page
 // app.get('/home/selectImages',user.selectimages);//to render upload images project page
 app.post('/createProject',user.createproject);//to create project

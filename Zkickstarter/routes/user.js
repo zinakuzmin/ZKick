@@ -356,6 +356,25 @@ exports.getUserDetails = function(req, res){
     });
 };
 
+
+
+//---------------------------------Get project images -------------------
+exports.getProjectImages = function(req, res){
+
+    // var userId = req.session.userId;
+    // if(userId == null){
+    //     res.send({data: 'undefined'})
+    //     return;
+    // }
+    var projectID = req.query.projectID;
+
+    var sql = "select * from project_images where projectID = ?";
+    db.query(sql, [projectID], function(err, result){
+        res.send({data: result});
+        // res.send(result);
+    });
+};
+
 //---------------------------------Get closed projects -------------------
 exports.getClosedProjectsStats = function(req, res){
 
@@ -487,7 +506,7 @@ exports.cancelProject=function(req,res) {
         var post = req.body;
         var projectID = post.projectID;
 
-        var sql = "update projects set status = 'cancelled' where id = ?";
+        var sql = "update projects set status = 'Cancelled' where id = ?";
         db.query(sql, [projectID], function(err, result) {
             if (err) throw err;
             res.redirect("/");
@@ -527,11 +546,21 @@ exports.createproject=function(req,res){
         var donatedAmountOfMoney = 0;
         var status = "Active";
 
-        if (!req.files)
+        var shmulik = req.files;
+        var files = [];
+        if (Array.isArray(shmulik["files[]"])){
+            files = shmulik["files[]"];
+        }
+
+        else{
+            files.push(shmulik["files[]"]);
+        }
+
+
+        if (files.length < 1)
             return res.status(400).send('No files were uploaded.');
 
-        var shmulik = req.files;
-        var files = shmulik["files[]"];
+
 
         var callback = function(files, projectID){
             for (var i = 0; i < files.length; i++){
@@ -554,7 +583,7 @@ exports.createproject=function(req,res){
                     console.log("Filename before insert " + newFileName)
                     var query = db.query(insert_img, function(err, result) {
                         if (err) throw err;
-                        insertresult = result;
+                        // insertresult = result;
                         // res.redirect('profile/'+result.insertId);
                     });
                 } else {

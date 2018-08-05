@@ -64,7 +64,7 @@
 
 
         <!-- Main component for a primary marketing message or call to action -->
-          <div class="jumbotron">
+          <div class="jumbotron" style="background:#d1c4e9   !important">
 
 
               <!--Show projects statistics-->
@@ -78,16 +78,24 @@
                   <div class="column" >
                       <p id="cancelled"><strong>Failed Projects : </strong><span id="cancelled_projects"></span></p>
                   </div>
+
+
+              </div>
+
+              <!--<div style="padding-bottom: 20px;">-->
+              <div>
+                  <hr class="hr-text" >
               </div>
 
 
 
 
 
+
             <h1>Welcome <span id="userName"></span></h1>
-              <p>
-                  <a class="btn btn-lg btn-primary" href="/createProject" role="button">Start new project »</a>
-              </p>
+              <!--<p>-->
+                  <!--<a class="btn btn-lg btn-primary" href="/createProject" role="button">Start new project »</a>-->
+              <!--</p>-->
           </div>
 
             <profile ng-repeat="project in projects" data="project"></profile>
@@ -173,6 +181,26 @@
                 display: block;
             }
         }
+
+
+
+        .hr-text {
+            line-height: 1em;
+            position: relative;
+            outline: 0;
+            border: 0;
+            color: black;
+            text-align: center;
+            height: 0.1em;
+            opacity: .5;
+
+             padding: 0 .3em;
+             line-height: 0.5em;
+         // this is really the only tricky part, you need to specify the background color of the container element...
+         color: #818078;
+             background-color: #fcfcfa;
+         }
+
 
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

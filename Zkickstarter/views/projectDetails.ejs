@@ -1,5 +1,5 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <!------ Include the above in your HEAD tag ---------->
@@ -16,7 +16,13 @@
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script type="text/javascript" src="/loadImages.js"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<!--<script type="text/javascript" src="/loadImages.js"></script>-->
 
 
 
@@ -63,22 +69,6 @@
 
 <body>
 <%- include header %>
-<!--<div class="container">-->
-    <!--<div class="row">-->
-        <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
-            <!--<img class="img-responsive" ng-repeat="image in images" ng-src={{image.img_name}} alt={{image.img_name}} />-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-
-<div class="row">
-    <div class="column" ng-repeat="image in images">
-        <img class="img-responsive"  ng-src={{image.img_name}} alt={{image.img_name}} />
-    </div>
-</div>
-
 
 
 
@@ -92,51 +82,103 @@
 
 
 
-
-
-                    <div class="preview-pic tab-content">
-                        <div class="tab-pane active" id="pic-1"><img src=<%=project.images[0].img_name%> /></div>
-                        <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-                        <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-                        <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-                        <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
-                        <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
-                        <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+                    <!--Show projects regulators-->
+                    <div class="row" style="display: flex;align-items: center; justify-content: center;">
+                        <div class="col-sm">
+                            <form id="editform" class="form-horizontal" role="form" method="get" action="/getProjectEditor" style="display: none;">
+                                <button class="btn edit">Edit Project</button>
+                                <div class="col-md-9" hidden="true">
+                                    <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm" >
+                            <form id="deleteform" class="form-horizontal" role="form" method="post" action="/deleteProject" style="display: none;">
+                                <button type="submit" class="btn delete">Delete Project</button>
+                                <div class="col-md-9" hidden="true">
+                                    <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm" >
+                            <form id="cancelform" class="form-horizontal" role="form" method="post" action="/cancelProject" style="display: none;">
+                                <button type="submit" class="btn cancel">Cancel Project</button>
+                                <div class="col-md-9" hidden="true">
+                                    <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <ul class="preview-thumbnail nav nav-tabs">
-                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                        <li><a data-target="#pic-2" data-toggle="tab"><img src=<%=project.images[0].img_name%> /></a></li>
-                        <li><a data-target="#pic-3" data-toggle="tab"><img src=<%=project.images[1].img_name%> /></a></li>
-                        <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                        <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                        <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                        <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                        <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                    </ul>
+
+
+                    <div class="container" >
+                        <!--<h2>Carousel Example</h2>-->
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li ng-repeat="image in images" data-target="#myCarouse".{{image.index}} data-slide-to={{image.index}} ></li>
+                                <!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner"  style="height: 300px;">
+                                <div class="item active">
+                                    <img src=<%=project.images[0].img_name%> alt="mainImg" style="margin: 0 auto;">
+                                </div>
+
+
+                                <div class="item"  ng-repeat="image in images">
+                                    <img class="img-responsive center-block"  ng-src={{image.img_name}} alt={{image.img_name}} style="margin: 0 auto;"/>
+                                </div>
+
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
+
                 <div class="details col-md-6">
                     <h3 class="product-title"><%=project.name%></h3>
-                    <h3 class="product-img"><%=project.images[0].img_name%></h3>
+                    <!--<h3 class="product-img"><%=project.images[0].img_name%></h3>-->
                     <div class="rating">
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
-                        <span class="review-no">41 reviews</span>
+                        <!--<div class="stars">-->
+                            <!--<span class="fa fa-star checked"></span>-->
+                            <!--<span class="fa fa-star checked"></span>-->
+                            <!--<span class="fa fa-star checked"></span>-->
+                            <!--<span class="fa fa-star"></span>-->
+                            <!--<span class="fa fa-star"></span>-->
+                        <!--</div>-->
+                        <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                        <!--<button class="like btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span></span></button>-->
+                        <span class="review-no"><strong><%=project.num_of_supporters%></strong> people have already supported us!</span>
+
                     </div>
-                    <p class="product-description"><%=project.description%></p>
-                    <h4 class="requested">Requested: <span id="required_amount_span"><%=project.requestedAmountOfMoney%></span></h4>
-                    <h4 class="donated">Donated: <span id="donated_span"><%=project.donated%></span></h4>
-                    <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+                    <!--<p class="product-description"><strong>About us: </strong><%=project.description%></p>-->
+                    <h4 class="requested"><strong>To achieve the goal we need: </strong><span id="required_amount_span"><%=project.requestedAmountOfMoney%> $</span></h4>
+                    <h4 class="donated"><strong>We already have: </strong><span id="donated_span"><%=project.donated%> $</span></h4>
+                    <!--<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>-->
                     <p id="countdown"></p>
 
-                    <div id="myProgress" style="width: 100%; background-color: #ddd;">
-                        <div id="myBar" style="width: 50%; height: 20px; background-color: #4CAF50; text-align: center; line-height: 20px; color: white;">10%</div>
+                    <div id="myProgressT" style="width: 100%; padding-top: 7px; padding-bottom: 7px">
+                        <div id="myProgress" style="width: 100%; background-color: #ddd;">
+                            <div id="myBar" style="width: 50%; height: 20px; background-color: #4CAF50; text-align: center; line-height: 20px; color: white;">10%</div>
+                        </div>
                     </div>
+
+
+
+
 
                     <div hidden="false">
                         <p id="end_date"><%=project.endDate%></p>
@@ -148,25 +190,30 @@
 
 
 
-                    <h5 class="sizes">sizes:
-                        <span class="size" data-toggle="tooltip" title="small">s</span>
-                        <span class="size" data-toggle="tooltip" title="medium">m</span>
-                        <span class="size" data-toggle="tooltip" title="large">l</span>
-                        <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
-                    </h5>
-                    <h5 class="colors">colors:
-                        <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
-                        <span class="color green"></span>
-                        <span class="color blue"></span>
-                    </h5>
+
+
 
 
                     <form class="form-horizontal" role="form" method="post" action="/registerDonations" onSubmit="return checkblank(this);">
                         <div class="form-group" >
-                            <label for="amount" class="col-md-3 control-label">Support us</label>
-                            <div class="col-md-9" >
-                                <input type="number" class="form-control" name="amount" >
+                            <!--<label for="amount" class="col-md-3 control-label"><strong>Please support us! </strong></label>-->
+                            <p for="amount" class="col-md-5" style="font-size: medium; padding-top: 15px"><strong>Please support us! </strong></p>
+                            <!--<div class="col-md-9 ">-->
+                                <!--<input type="number" class="form-control" name="amount" >-->
+                            <!--</div>-->
+
+
+                            <div class="input-group col-md-9 " style="padding-left: 15px">
+
+
+                                <input type="number" name="amount" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <span class="input-group-text" >$</span>
+
+
                             </div>
+
+
+
                             <div hidden="true">
                                 <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
                             </div>
@@ -180,7 +227,7 @@
                         <!--</div>-->
                         <div class="form-group">
                             <!-- Button -->
-                            <div class="col-md-offset-3 col-md-9">
+                            <div class="col-md-3">
                                 <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Support project</button>
 
                             </div>
@@ -196,36 +243,35 @@
 
 
                 </div>
+
+                <div name="descripion_div" style="width:1050px; padding-top:25px; padding-left: 25px">
+                    <h1><strong>About us:</strong></h1>
+                    <p class="product-description" style="font-size: medium;"><%=project.description%></p>
+                    <!--<p class="product-description" style="font-size: large;"><strong>About us: </strong><%=project.description%></p>-->
+                </div>
+
+                <iframe width="1050" height="600" style="padding-top: 50px; padding-left: 25px"
+                        src= <%=project.video_link%> frameborder="0" allowfullscreen>
+                </iframe>
             </div>
         </div>
     </div>
 
-    <iframe width="420" height="315"
-            src= <%=project.video_link%> frameborder="0" allowfullscreen>
-    </iframe>
-    <p name="projectID" id="projectID" hidden="false"><%=project.id%></p>
-
-    <form id="editform" class="form-horizontal" role="form" method="get" action="/getProjectEditor" style="display: none;">
-        <button class="btn edit">Edit Project</button>
-        <div class="col-md-9" hidden="true">
-            <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
-        </div>
-    </form>
 
 
-    <form id="deleteform" class="form-horizontal" role="form" method="post" action="/deleteProject" style="display: none;">
-        <button type="submit" class="btn delete">Delete Project</button>
-        <div class="col-md-9" hidden="true">
-            <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
-        </div>
-    </form>
 
-    <form id="cancelform" class="form-horizontal" role="form" method="post" action="/cancelProject" style="display: none;">
-        <button type="submit" class="btn cancel">Cancel Project</button>
-        <div class="col-md-9" hidden="true">
-            <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
-        </div>
-    </form>
+
+
+
+
+    <!--<p name="project_id" id="project_id" hidden="false"><%=project.id%></p>-->
+
+
+
+
+
+
+
 
 
 
@@ -238,6 +284,7 @@
 <%- include footer %>
 </body>
 </html>
+
 
 
 
@@ -284,16 +331,26 @@
 
 <script>
     var percentage = 0;
-    var donated = document.getElementById("donated_span").textContent;
-    var required = document.getElementById("required_amount_span").textContent;
+    var donated = document.getElementById("donated_span").textContent.replace("$", "");
+    var required = document.getElementById("required_amount_span").textContent.replace("$", "");
     if (donated && required){
-        if (!isNaN(donated) && !isNaN(required))
+        if (donated != " " && !isNaN(donated) && !isNaN(required))
             percentage = (Number(donated) * 100) / Number(required);
     }
-    document.getElementById("myBar").innerHTML = Math.round(percentage) + "%";
-    if (percentage < 100)
+    // document.getElementById("myBar").innerHTML = Math.round(percentage) + "%";
+    if (percentage > 100){
+        document.getElementById("myBar").style.width = 100 + "%";
+    }
+    else{
         document.getElementById("myBar").style.width = Math.round(percentage) + "%";
-    document.getElementById("myBar").style.width = 100 + "%";
+    }
+
+    if (percentage == 0)
+        document.getElementById("myBar").innerHTML = "0%";
+    else
+        document.getElementById("myBar").innerHTML = Math.round(percentage) + "%";
+
+
 </script>
 
 <script type="text/JavaScript">
@@ -317,6 +374,8 @@
 </script>
 
 
+<script type="text/javascript" src="/loadImages.js"></script>
+
 <style>
 
 
@@ -338,6 +397,18 @@
 
     .delete:hover {
         background: #f44336;
+        color: white;
+    }
+
+
+    .cancel {
+        background-color: white;
+        color: black;
+        border: 2px solid #555555;
+    }
+
+    .cancel:hover {
+        background-color: #555555;
         color: white;
     }
 
