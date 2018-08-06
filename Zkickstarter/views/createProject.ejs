@@ -7,9 +7,6 @@
 
 
     <title>ZKickstarter</title>
-    <!--<link rel='stylesheet' href='..view//css/base.css' />-->
-    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -52,8 +49,6 @@
                               <div class="form-group">
                                   <label for="project_description" class="col-md-9 control-label">Project description</label>
                                   <div class="col-md-9">
-                                      <!--<input type="text" class="form-control" name="project_description">-->
-                                      <!--<textarea name="project_description" rows="10" cols="30">Describe your project</textarea>-->
                                       <textarea name="project_description" id="project_description" class="form-control"></textarea>
                                   </div>
                               </div>
@@ -69,6 +64,14 @@
                                       <input type="text" class="form-control" name="video_link" id="video_link">
                                   </div>
                               </div>
+
+                              <div class="form-group">
+                                  <label for="demo_link" class="col-md-3 control-label">Demo URL</label>
+                                  <div class="col-md-9">
+                                      <input type="text" class="form-control" name="demo_link" id="demo_link">
+                                  </div>
+                              </div>
+
                               <div class="form-group">
                                   <label for="location" class="col-md-3 control-label">Location</label>
                                   <div class="col-md-9">
@@ -87,7 +90,7 @@
 
                                       <div>
                                           <label class="col-md-2 control-label" for="end">End : </label>
-                                          <input type="date" id="end" name="project_end_date" value="2018-08-06" min="2018-08-06" max="2018-12-31" />
+                                          <input type="date" id="end" name="project_end_date" value="2018-08-07" min="2018-08-07" max="2018-12-31" />
                                       </div>
 
                                   </fieldset>
@@ -125,11 +128,7 @@
                                       <!--To give the control a modern look, I have applied a stylesheet in the parent span.-->
                                       <span class="btn btn-success fileinput-button">
                                           <span>Select Attachment</span>
-                                             <!--<input class="form-control" type="file" name="uploaded_images[]" multiple accept="image/jpeg, image/png, image/gif"/>-->
                                              <input  type="file" name="files[]" id="files" multiple accept="image/jpeg, image/png, image/gif"/>
-                                             <!--<input type="file" name="imgUploader" multiple accept="image/jpeg, image/png, image/gif"/><br />-->
-                                             <!--<input type="file" name="files[]" id="files" multiple accept="image/jpeg, image/png, image/gif,"><br />-->
-                                             <!--<input type="file" name="fullfiles[]" id="fullfiles" multiple accept="image/jpeg, image/png, image/gif,"><br />-->
                                       </span>
                                       <output id="Filelist"></output>
                                   </div>
@@ -307,7 +306,7 @@
 
        //To check file Size according to upload conditions
        function CheckFileSize(fileSize) {
-           if (fileSize < 300000) {
+           if (fileSize < 3000000) {
                return true;
            }
            else {

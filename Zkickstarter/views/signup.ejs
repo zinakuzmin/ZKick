@@ -23,7 +23,7 @@
                             <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/login">Sign In</a></div>
                         </div> 
                         <div class="panel-body" >
-                            <form class="form-horizontal" role="form" method="post" action="/signup" onSubmit="return checkblank(this);">
+                            <form class="form-horizontal" role="form" method="post" action="/signup" onsubmit="return validateForm()">
                                 <% if (message.length > 0) { %>
                                                                                                             <div class="alert alert-success col-sm-12"><%= message %></div>
                                                                                                 <% } %>
@@ -35,33 +35,33 @@
                                 <div class="form-group">
                                     <label for="first_name" class="col-md-3 control-label">First Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="first_name" placeholder="First Name">
+                                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="last_name" class="col-md-3 control-label">Last Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+                                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name">
                                     </div>
                                 </div>
                                                                                                 <div class="form-group">
                                     <label for="age" class="col-md-3 control-label">Age</label>
                                     <div class="col-md-9">
                                         <!--input type="number" min="0"-->
-                                        <input type="number" min="21" class="form-control" name="age" placeholder="30">
+                                        <input type="number" min="21" class="form-control" name="age" id="age" placeholder="30">
                                     </div>
                                 </div>
                                                                                                 <div class="form-group">
                                     <label for="user_name" class="col-md-3 control-label">User Name</label>
                                     <div class="col-md-9">
                                         <!--<input type="email" name="email">-->
-                                        <input type="email" class="form-control" name="user_name" placeholder="User Name">
+                                        <input type="email" class="form-control" name="user_name" id="user_name" placeholder="User Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="col-md-3 control-label">Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="password" placeholder="Password">
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                                     </div>
                                 </div>
  
@@ -86,4 +86,40 @@
    
 </body>
 </html>
- 
+
+
+
+<script>
+    function validateForm() {
+        var first_name = document.getElementById("first_name").value
+        if (first_name == "") {
+            alert("First Name must be filled out");
+            return false;
+        }
+
+        var last_name = document.getElementById("last_name").value
+        if (last_name == "") {
+            alert("Last Name must be filled out");
+            return false;
+        }
+
+        var age = document.getElementById("age").value
+        if (age == "") {
+            alert("Age must be filled out");
+            return false;
+        }
+
+        var user_name = document.getElementById("user_name").value
+        if (user_name == "") {
+            alert("User Name must be filled out");
+            return false;
+        }
+
+        var password = document.getElementById("password").value
+        if (password == "") {
+            alert("Password must be filled out");
+            return false;
+        }
+    }
+</script>
+

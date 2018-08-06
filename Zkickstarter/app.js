@@ -1,11 +1,6 @@
 /**
 * Module dependencies.
 */
-// var express = require('express')
-//   , routes = require('./routes')
-//   , user = require('./routes/user')
-//   , http = require('http')
-//   , path = require('path');
 
 var express = require('express')
     , routes = require('./routes')
@@ -20,7 +15,7 @@ var express = require('express')
     , bcrypt = require('bcrypt');
 
 
-//var methodOverride = require('method-override');
+
 var session = require('express-session');
 var app = express();
 var mysql      = require('mysql');
@@ -47,8 +42,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, 'data')));
-// var publicDir = require('path').join(__dirname,'/public');
-// app.use(express.static(publicDir));
 app.use(fileUpload());
 app.use(session({
               secret: 'keyboard cat',
@@ -61,33 +54,27 @@ app.use(session({
 
 
 app.get('/', routes.index);//call for main index page
-// app.get('/', user.getdashboard);//call for main index page
-app.get('/signup', user.signup);//call for signup page
+app.get('/signup', user.signup);//get signup page
 app.post('/signup', user.signup);//call for signup post 
-app.get('/login', routes.login);//call for login page
-// app.get('/login', routes.index);//call for login page
+app.get('/login', routes.login);//get login page
 app.post('/login', user.login);//call for login post
-app.get('/dashboard', user.getdashboard);//call for dashboard page after login
-app.get('/projects', user.dashboard);//call for dashboard page after login
-// app.get('/home/projects', user.dashboard);//call for dashboard page after login
-app.get('/getActiveProjectsStats', user.getActiveProjectsStats);//call for dashboard page after login
-app.get('/getClosedProjectsStats', user.getClosedProjectsStats);//call for dashboard page after login
-app.get('/getCancelledProjectsStats', user.getCancelledProjectsStats);//call for dashboard page after login
-app.get('/loadProject', user.loadProject);//call for dashboard page after login
-// app.get('/home/projectDetails', user.projectDetails);//call for dashboard page after login
+app.get('/dashboard', user.getdashboard);//get data for dashboard page after login
+app.get('/projects', user.dashboard);//get for dashboard page after login
+app.get('/getActiveProjectsStats', user.getActiveProjectsStats);//get active projects to display on dashboard
+app.get('/getClosedProjectsStats', user.getClosedProjectsStats);//get closed projects to display on dashboard
+app.get('/getCancelledProjectsStats', user.getCancelledProjectsStats);//get cancelled projects to display on dashboard
+app.get('/loadProject', user.loadProject);//get project details page
 app.get('/logout', user.logout);//call for logout
-app.get('/profile',user.profile);//to render users profile
+app.get('/profile',user.profile);// render users profile
 app.get('/createProject',user.create);//to render create project page
-app.get('/getProjectEditor',user.getProjectEditor);//to render create project page
-app.get('/getProjectImages',user.getProjectImages);//to render create project page
-app.get('/getUserDetails',user.getUserDetails);//to render create project page
-// app.get('/home/selectImages',user.selectimages);//to render upload images project page
+app.get('/getProjectEditor',user.getProjectEditor);//to render project editor page
+app.get('/getProjectImages',user.getProjectImages);// images of project
+app.get('/getUserDetails',user.getUserDetails);//get user details
 app.post('/createProject',user.createproject);//to create project
 app.post('/registerDonations',user.registerDonations);
 app.post('/deleteProject',user.deleteProject);
 app.post('/cancelProject',user.cancelProject);
 app.post('/updateProject',user.updateProject);
-// app.post('/home/uploadImages',user.uploadimages);//to upload images to project
 app.get('/item.tpl.html', function(req, res){
     res.sendfile('C:\\oldLaptop2018\\afeka\\Internet\\Kickstarter\\ZKick\\Zkickstarter\\views\\item.tpl.html');
 });

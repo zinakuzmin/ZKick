@@ -1,277 +1,230 @@
 
-    <html ng-app="app">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Zkick dashboard">
-        <meta name="author" content="@Zina">
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zkick dashboard">
+    <meta name="author" content="@Zina">
 
 
-        <title>ZKickstarter</title>
-        <!--<link rel='stylesheet' href='..view//css/base.css' />-->
-        <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
-        <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
-        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-        <script type="text/javascript" src="/script.js"></script>
-        <script type="text/javascript" src="/isUserLoggedIn.js"></script>
+    <title>ZKickstarter</title>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="/script.js"></script>
+    <script type="text/javascript" src="/isUserLoggedIn.js"></script>
 
 
-        <!-- Bootstrap core CSS -->
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom styles for this template -->
-        <link href="css/portfolio-item.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/portfolio-item.css" rel="stylesheet">
 
-    </head>
-    <body >
-    <%- include header %>
-    <div class="container" ng-controller="DashboardController">
+</head>
+<body >
+<%- include header %>
+<div class="container" ng-controller="DashboardController">
 
-        <!--&lt;!&ndash; Navigation &ndash;&gt;-->
-        <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">-->
-            <!--<div class="container">-->
-                <!--<a class="navbar-brand" href="#">Zkick - fulfill your dream</a>-->
-                <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
-                    <!--<span class="navbar-toggler-icon"></span>-->
-                <!--</button>-->
-                <!--<div class="collapse navbar-collapse" id="navbarResponsive">-->
-                    <!--<ul class="navbar-nav ml-auto">-->
-                        <!--<li class="nav-item active">-->
-                            <!--<a class="nav-link" href="/">Home-->
-                                <!--<span class="sr-only">(current)</span>-->
-                            <!--</a>-->
-                        <!--</li>-->
-                        <!--<li class="nav-item">-->
-                            <!--<a class="nav-link" id="my_profile_button" href="/profile">View Profile</a>-->
-                        <!--</li>-->
-                        <!--<li class="nav-item">-->
-                            <!--<a class="nav-link" id="logout_button" href="/logout">Logout</a>-->
-                        <!--</li>-->
-                        <!--<li class="nav-item">-->
-                            <!--<a class="nav-link" id="login_button" href="/login">Login</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</nav>-->
-
-        <!--<div hidden="true">-->
-            <!--<p id="is_admin"></p>-->
-            <!--<p id="current_user_id"></p>-->
-        <!--</div>-->
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron" style="background:#d1c4e9   !important">
 
 
-        <!-- Main component for a primary marketing message or call to action -->
-          <div class="jumbotron" style="background:#d1c4e9   !important">
+        <!--Show projects statistics-->
+        <div class="row">
+            <div class="column" >
+                <p id="active"><strong>Live Projects : </strong><span id="active_projects"></span></p>
+            </div>
+            <div class="column" >
+                <p id="closed"><strong>Funded Projects : </strong><span id="closed_projects"></span></p>
+            </div>
+            <div class="column" >
+                <p id="cancelled"><strong>Failed Projects : </strong><span id="cancelled_projects"></span></p>
+            </div>
+        </div>
+
+        <div>
+            <hr class="hr-text" >
+        </div>
 
 
-              <!--Show projects statistics-->
-              <div class="row">
-                  <div class="column" >
-                      <p id="active"><strong>Live Projects : </strong><span id="active_projects"></span></p>
-                  </div>
-                  <div class="column" >
-                      <p id="closed"><strong>Funded Projects : </strong><span id="closed_projects"></span></p>
-                  </div>
-                  <div class="column" >
-                      <p id="cancelled"><strong>Failed Projects : </strong><span id="cancelled_projects"></span></p>
-                  </div>
-
-
-              </div>
-
-              <!--<div style="padding-bottom: 20px;">-->
-              <div>
-                  <hr class="hr-text" >
-              </div>
-
-
-
-
-
-
-            <h1>Welcome <span id="userName"></span></h1>
-              <!--<p>-->
-                  <!--<a class="btn btn-lg btn-primary" href="/createProject" role="button">Start new project »</a>-->
-              <!--</p>-->
-          </div>
-
-            <profile ng-repeat="project in projects" data="project"></profile>
-
+        <h1>Welcome <span id="userName"></span></h1>
     </div>
 
+    <profile ng-repeat="project in projects" data="project"></profile>
 
-    <%- include footer %>
-
-
-        </body>
-    </html>
+</div>
 
 
+<%- include footer %>
 
-    <script>
+
+</body>
+</html>
 
 
-        $.ajax(
-            {
-                type:'GET',
-                url:'/getActiveProjectsStats',
-                success: function(data){
-                    document.getElementById("active_projects").innerHTML = data.active_projects
-                }
+
+<script>
+
+
+    $.ajax(
+        {
+            type:'GET',
+            url:'/getActiveProjectsStats',
+            success: function(data){
+                document.getElementById("active_projects").innerHTML = data.active_projects
             }
-        );
+        }
+    );
 
 
-        $.ajax(
-            {
-                type:'GET',
-                url:'/getClosedProjectsStats',
-                success: function(data){
-                    document.getElementById("closed_projects").innerHTML = data.closed_projects
-                }
+    $.ajax(
+        {
+            type:'GET',
+            url:'/getClosedProjectsStats',
+            success: function(data){
+                document.getElementById("closed_projects").innerHTML = data.closed_projects
             }
-        );
+        }
+    );
 
 
-        $.ajax(
-            {
-                type:'GET',
-                url:'/getCancelledProjectsStats',
-                success: function(data){
-                    document.getElementById("cancelled_projects").innerHTML = data.cancelled_projects
-                }
+    $.ajax(
+        {
+            type:'GET',
+            url:'/getCancelledProjectsStats',
+            success: function(data){
+                document.getElementById("cancelled_projects").innerHTML = data.cancelled_projects
             }
-        );
-    </script>
+        }
+    );
+</script>
 
-    <style>
+<style>
 
+    body {
+        padding-top: 54px;
+    }
+
+    @media (min-width: 992px) {
         body {
-            padding-top: 54px;
+            padding-top: 56px;
         }
-
-        @media (min-width: 992px) {
-            body {
-                padding-top: 56px;
-            }
-        }
+    }
 
 
-        html {
-            box-sizing: border-box;
-        }
+    html {
+        box-sizing: border-box;
+    }
 
-        *, *:before, *:after {
-            box-sizing: inherit;
-        }
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
 
+    .column {
+        float: left;
+        width: 33.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+
+    @media screen and (max-width: 650px) {
         .column {
-            float: left;
-            width: 33.3%;
-            margin-bottom: 16px;
-            padding: 0 8px;
-        }
-
-        @media screen and (max-width: 650px) {
-            .column {
-                width: 100%;
-                display: block;
-            }
-        }
-
-
-
-        .hr-text {
-            line-height: 1em;
-            position: relative;
-            outline: 0;
-            border: 0;
-            color: black;
-            text-align: center;
-            height: 0.1em;
-            opacity: .5;
-
-             padding: 0 .3em;
-             line-height: 0.5em;
-         // this is really the only tricky part, you need to specify the background color of the container element...
-         color: #818078;
-             background-color: #fcfcfa;
-         }
-
-
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            width: 100%
-            min-height: 200px;
-        }
-
-        .container {
-            padding: 0 16px;
-        }
-
-        .container::after, .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        .title {
-            color: grey;
-        }
-
-        .button {
-            border: none;
-            outline: 0;
-            display: inline-block;
-            padding: 8px;
-            color: white;
-            background-color: #000;
-            text-align: center;
-            cursor: pointer;
             width: 100%;
+            display: block;
         }
-
-        .button:hover {
-            background-color: #555;
-        }
-
-        #myProgress {
-            /*width: 100%;*/
-            background-color: #ddd;
-        }
-
-        #myBar {
-            /*width: 10%;*/
-            height: 20px;
-            background-color: #4CAF50;
-            text-align: center;
-            line-height: 20px;
-            color: white;
-        }
+    }
 
 
 
-    </style>
+    .hr-text {
+        line-height: 1em;
+        position: relative;
+        outline: 0;
+        border: 0;
+        color: black;
+        text-align: center;
+        height: 0.1em;
+        opacity: .5;
+
+        padding: 0 .3em;
+        line-height: 0.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #818078;
+        background-color: #fcfcfa;
+    }
 
 
-    <script>
-        function loadProject(projectID) {
-            $.ajax({
-                url: "loadProject",
-                type: "get", //send it through get method
-                data: {
-                    projectID: projectID
-                },
-                success: function(response) {
-                    load(response);
-                },
-                error: function(xhr) {
-                    //Do Something to handle error
-                }
-            });
-        }
-    </script>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        width: 100%
+        min-height: 200px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .container::after, .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .title {
+        color: grey;
+    }
+
+    .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .button:hover {
+        background-color: #555;
+    }
+
+    #myProgress {
+        /*width: 100%;*/
+        background-color: #ddd;
+    }
+
+    #myBar {
+        /*width: 10%;*/
+        height: 20px;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 20px;
+        color: white;
+    }
+
+
+
+</style>
+
+
+<script>
+    function loadProject(projectID) {
+        $.ajax({
+            url: "loadProject",
+            type: "get", //send it through get method
+            data: {
+                projectID: projectID
+            },
+            success: function(response) {
+                load(response);
+            },
+            error: function(xhr) {
+                //Do Something to handle error
+            }
+        });
+    }
+</script>
 

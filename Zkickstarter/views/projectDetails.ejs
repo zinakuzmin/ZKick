@@ -10,7 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>eCommerce Product Details</title>
+<title>Zkick Project Details</title>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
@@ -39,16 +39,9 @@
 
 
     <title>ZKickstarter</title>
-    <!--<link rel='stylesheet' href='..view//css/base.css' />-->
-    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-
-
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
 
     <script type="text/javascript" src="/script.js"></script>
@@ -77,9 +70,6 @@
         <div class="container-fliud">
             <div class="wrapper row">
                 <div class="preview col-md-6">
-
-
-
 
 
                     <!--Show projects regulators-->
@@ -118,7 +108,6 @@
                             <ol class="carousel-indicators">
                                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                                 <li ng-repeat="image in images" data-target="#myCarouse".{{image.index}} data-slide-to={{image.index}} ></li>
-                                <!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
                             </ol>
 
                             <!-- Wrapper for slides -->
@@ -150,24 +139,13 @@
 
                 <div class="details col-md-6">
                     <h3 class="product-title"><%=project.name%></h3>
-                    <!--<h3 class="product-img"><%=project.images[0].img_name%></h3>-->
                     <div class="rating">
-                        <!--<div class="stars">-->
-                            <!--<span class="fa fa-star checked"></span>-->
-                            <!--<span class="fa fa-star checked"></span>-->
-                            <!--<span class="fa fa-star checked"></span>-->
-                            <!--<span class="fa fa-star"></span>-->
-                            <!--<span class="fa fa-star"></span>-->
-                        <!--</div>-->
                         <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
-                        <!--<button class="like btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span></span></button>-->
                         <span class="review-no"><strong><%=project.num_of_supporters%></strong> people have already supported us!</span>
 
                     </div>
-                    <!--<p class="product-description"><strong>About us: </strong><%=project.description%></p>-->
                     <h4 class="requested"><strong>To achieve the goal we need: </strong><span id="required_amount_span"><%=project.requestedAmountOfMoney%> $</span></h4>
                     <h4 class="donated"><strong>We already have: </strong><span id="donated_span"><%=project.donated%> $</span></h4>
-                    <!--<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>-->
                     <p id="countdown"></p>
 
                     <div id="myProgressT" style="width: 100%; padding-top: 7px; padding-bottom: 7px">
@@ -175,10 +153,6 @@
                             <div id="myBar" style="width: 50%; height: 20px; background-color: #4CAF50; text-align: center; line-height: 20px; color: white;">10%</div>
                         </div>
                     </div>
-
-
-
-
 
                     <div hidden="false">
                         <p id="end_date"><%=project.endDate%></p>
@@ -188,67 +162,39 @@
                     </div>
 
 
-
-
-
-
-
-
                     <form class="form-horizontal" role="form" method="post" action="/registerDonations" onSubmit="return checkblank(this);">
                         <div class="form-group" >
                             <!--<label for="amount" class="col-md-3 control-label"><strong>Please support us! </strong></label>-->
                             <p for="amount" class="col-md-5" style="font-size: medium; padding-top: 15px"><strong>Please support us! </strong></p>
-                            <!--<div class="col-md-9 ">-->
-                                <!--<input type="number" class="form-control" name="amount" >-->
-                            <!--</div>-->
-
-
                             <div class="input-group col-md-9 " style="padding-left: 15px">
-
-
                                 <input type="number" name="amount" class="form-control" aria-label="Amount (to the nearest dollar)">
                                 <span class="input-group-text" >$</span>
-
-
                             </div>
-
-
-
                             <div hidden="true">
                                 <input type="projectID" class="form-control"  name="projectID" value=<%=project.ID%>>
                             </div>
                         </div>
-
-                        <!--<div class="form-group">-->
-                            <!--<label for="amount" class="col-md-3 control-label">Support us</label>-->
-                            <!--<div class="col-md-9">-->
-                                <!--<input type="number" class="form-control" name="amount" placeholder="10">-->
-                            <!--</div>-->
-                        <!--</div>-->
                         <div class="form-group">
                             <!-- Button -->
                             <div class="col-md-3">
                                 <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Support project</button>
-
                             </div>
                         </div>
                     </form>
-
-
-                    <!--<div class="action">-->
-                        <!--<button class="add-to-cart btn btn-default" type="button">add to cart</button>-->
-                        <!--<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>-->
-                    <!--</div>-->
-
-
-
                 </div>
 
                 <div name="descripion_div" style="width:1050px; padding-top:25px; padding-left: 25px">
                     <h1><strong>About us:</strong></h1>
-                    <p class="product-description" style="font-size: medium;"><%=project.description%></p>
-                    <!--<p class="product-description" style="font-size: large;"><strong>About us: </strong><%=project.description%></p>-->
+                    <p class="product-description" style="font-size: small;"><%=project.description%></p>
                 </div>
+
+                <div name="demo_link" id="demo_link" style="width:1050px; padding-top:25px; padding-left: 25px">
+                    <h1><strong>Demo:</strong></h1>
+                    <a href=<%=project.demo_link%> class="product-demo" style="font-size: small;"><%=project.demo_link%></a>
+                    <!--<a href="localhost:8282/birds" class="product-demo" style="font-size: small;">localhost:8282/birds</a>-->
+                    <!--<p class="product-demo" style="font-size: small;"><%=project.demo_link%></p>-->
+                </div>
+
 
                 <iframe width="1050" height="600" style="padding-top: 50px; padding-left: 25px"
                         src= <%=project.video_link%> frameborder="0" allowfullscreen>
@@ -256,28 +202,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-    <!--<p name="project_id" id="project_id" hidden="false"><%=project.id%></p>-->
-
-
-
-
-
-
-
-
-
-
-    <!--<button class="btn delete">Delete Project</button>-->
-
-
 
 </div>
 
@@ -320,10 +244,7 @@
                     document.getElementById("cancelform").style.display = 'block'
                 }
             }
-
         }
-
-
     }
 
 </script>
@@ -351,26 +272,6 @@
         document.getElementById("myBar").innerHTML = Math.round(percentage) + "%";
 
 
-</script>
-
-<script type="text/JavaScript">
-    function deleteProject() {
-
-        alert("Success")
-        // $.ajax({
-        //     url: "deleteProject",
-        //     type: "post", //send it through get method
-        //     data: {
-        //         projectID: document.getElementById("projectID")
-        //     },
-        //     success: function(response) {
-        //         alert("Success")
-        //     },
-        //     error: function(xhr) {
-        //         //Do Something to handle error
-        //     }
-        // });
-    }
 </script>
 
 
@@ -575,59 +476,38 @@
             -webkit-transform: scale(1);
             transform: scale(1); } }
 
-    /*# sourceMappingURL=style.css.map */
-
-    /*#myProgress {*/
-        /*width: 100%;*/
-        /*background-color: #ddd;*/
-    /*}*/
-
-    /*#myBar {*/
-        /*width: 10%;*/
-        /*height: 20px;*/
-        /*background-color: #4CAF50;*/
-        /*text-align: center;*/
-        /*line-height: 20px;*/
-        /*color: white;*/
-    /*}*/
-
 </style>
 
 
 <script>
-// Set the date we're counting down to
-var date = document.getElementById("end_date").textContent
-var countDownDate = new Date(date).getTime();
+    // Set the date we're counting down to
+    var date = document.getElementById("end_date").textContent
+    var countDownDate = new Date(date).getTime();
 
-// Update the count down every 1 second
-var x = setInterval(function() {
+    // Update the count down every 1 second
+    var x = setInterval(function() {
 
 // Get todays date and time
-var now = new Date().getTime();
+        var now = new Date().getTime();
 
 // Find the distance between now an the count down date
-var distance = countDownDate - now;
+        var distance = countDownDate - now;
 
 // Time calculations for days, hours, minutes and seconds
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 //var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 // Output the result in an element with id="demo"
-document.getElementById("countdown").innerHTML = "Time Left: " + days + "d " + hours + "h "
-+ minutes + "m " ;// + seconds + "s ";
+        document.getElementById("countdown").innerHTML = "Time Left: " + days + "d " + hours + "h "
+            + minutes + "m " ;// + seconds + "s ";
 
 // If the count down is over, write some text
-if (distance < 0) {
-clearInterval(x);
-document.getElementById("demo").innerHTML = "EXPIRED";
-}
-}, 1000);
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
 </script>
 
-
-<!--<script>-->
-    <!--var admin -->
-    <!---->
-<!--</script>-->

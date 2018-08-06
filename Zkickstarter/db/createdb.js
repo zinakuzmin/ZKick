@@ -38,7 +38,8 @@ var createProjectsTableSQL = "CREATE TABLE projects " +
     "    requestedAmountOfMoney int NOT NULL ," +
     "    donatedAmountOfMoney int NOT NULL ," +
     "    category varchar(255) NOT NULL, \n" +
-    "    video_link varchar(255) , \n" +
+    "    video_link varchar(255) default null, \n" +
+    "    demo_link varchar(255) default null, \n" +
     "    location varchar(255) NOT NULL, \n" +
     "    PRIMARY KEY (ID),\n" +
     "    FOREIGN KEY (ownerID) REFERENCES users(ID) ON DELETE CASCADE)";
