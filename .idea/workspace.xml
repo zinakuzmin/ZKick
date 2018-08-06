@@ -2,95 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5caff38-91d8-4031-955a-e51174c5f967" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/ZkickStarter.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/ZkickStarter.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/db/createdb.js" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/db/createdb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532463203998-ScreenHunter38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532463203999-ScreenHunter39.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532463396094-ScreenHunter49.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532463396095-ScreenHunter54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532463396095-ScreenHunter56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532463471395-ScreenHunter15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532463471395-ScreenHunter22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532463607679-ScreenHunter15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532463607680-ScreenHunter22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511297117-ScreenHunter48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511297122-ScreenHunter54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511529157-ScreenHunter48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511529159-ScreenHunter54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511698006-ScreenHunter38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511698006-ScreenHunter54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511698007-ScreenHunter56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511848648-ScreenHunter54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511848650-ScreenHunter55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532511848650-ScreenHunter56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532518749307-ScreenHunter43.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532518749308-ScreenHunter50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532518749308-ScreenHunter51.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532518951123-ScreenHunter19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532518951124-ScreenHunter20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532518951124-ScreenHunter21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519419283-ScreenHunter55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519419283-ScreenHunter56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519543406-ScreenHunter20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519543407-ScreenHunter21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519543408-ScreenHunter22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519749222-ScreenHunter20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519749223-ScreenHunter21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519844090-ScreenHunter19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519844091-ScreenHunter20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532519844092-ScreenHunter21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532520773522-ScreenHunter65.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532520773523-ScreenHunter66.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532520773523-ScreenHunter67.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532530607039-ScreenHunter22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532530607040-ScreenHunter39.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532550399248-ScreenHunter54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532550399249-ScreenHunter55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532551932728-ScreenHunter59.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532551932729-ScreenHunter60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532551932729-ScreenHunter67.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532555341916-ScreenHunter55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532555341918-ScreenHunter56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532635530056-ScreenHunter38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532635530058-ScreenHunter39.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532640199598-ScreenHunter12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532640199601-ScreenHunter13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532640373250-ScreenHunter56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532640373251-ScreenHunter60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532641011514-ScreenHunter10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532641011514-ScreenHunter11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532641011515-ScreenHunter12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532713599114-ScreenHunter60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532713599115-ScreenHunter61.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532713599115-ScreenHunter62.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532714393264-ScreenHunter23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532714393265-ScreenHunter25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532714393265-ScreenHunter26.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532714468603-ScreenHunter66.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1532714468603-ScreenHunter67.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533399826592-ScreenHunter54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533399826594-ScreenHunter55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533399826595-ScreenHunter56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533469085225-ScreenHunter68.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533469085226-ScreenHunter69.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533469085227-ScreenHunter70.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533469085227-ScreenHunter71.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533470772766-ScreenHunter55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533470772768-ScreenHunter56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533471220160-ScreenHunter54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533471221394-ScreenHunter55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533471222145-ScreenHunter56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533471285697-ScreenHunter24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/images/uploads/1533471418484-ScreenHunter38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/public/loadImages.js" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/public/loadImages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/routes/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Zkickstarter/views/createProject.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/views/createProject.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/views/dashboard.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/views/dashboard.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/views/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/views/header.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/views/projectDetails.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/views/projectDetails.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Zkickstarter/views/projectEditor.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/views/projectEditor.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zkickstarter/views/signup.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/Zkickstarter/views/signup.ejs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -107,8 +20,8 @@
       <file leaf-file-name="createProject.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Zkickstarter/views/createProject.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="92" column="128" selection-start-line="92" selection-start-column="128" selection-end-line="92" selection-end-column="128" />
+            <state relative-caret-position="29">
+              <caret line="31" column="124" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="124" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="e#11726#12894#0#HTML" />
@@ -131,7 +44,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Zkickstarter/routes/user.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -197,11 +110,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="projectEditor.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="projectEditor.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Zkickstarter/views/projectEditor.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="535" column="12" lean-forward="true" selection-start-line="531" selection-start-column="11" selection-end-line="535" selection-end-column="12" />
+            <state relative-caret-position="162">
+              <caret line="32" column="118" selection-start-line="32" selection-start-column="118" selection-end-line="32" selection-end-column="118" />
               <folding>
                 <element signature="e#43#50#1" expanded="true" />
               </folding>
@@ -255,12 +168,12 @@
       <find>about</find>
       <find>size</find>
       <find>date</find>
-      <find>video url</find>
       <find>loca</find>
       <find>updateproject</find>
       <find>createproject</find>
       <find>getproject</find>
       <find>login</find>
+      <find>video url</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -307,10 +220,10 @@
         <option value="$PROJECT_DIR$/Zkickstarter/app.js" />
         <option value="$PROJECT_DIR$/Zkickstarter/db/createdb.js" />
         <option value="$PROJECT_DIR$/Zkickstarter/views/signup.ejs" />
-        <option value="$PROJECT_DIR$/Zkickstarter/views/createProject.ejs" />
-        <option value="$PROJECT_DIR$/Zkickstarter/views/projectEditor.ejs" />
         <option value="$PROJECT_DIR$/Zkickstarter/views/projectDetails.ejs" />
         <option value="$PROJECT_DIR$/Zkickstarter/routes/user.js" />
+        <option value="$PROJECT_DIR$/Zkickstarter/views/createProject.ejs" />
+        <option value="$PROJECT_DIR$/Zkickstarter/views/projectEditor.ejs" />
       </list>
     </option>
   </component>
@@ -500,28 +413,28 @@
       <workItem from="1533152352357" duration="1215000" />
       <workItem from="1533194261814" duration="602000" />
       <workItem from="1533314608300" duration="425000" />
-      <workItem from="1533315283019" duration="27923000" />
+      <workItem from="1533315283019" duration="29334000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="296740000" />
+    <option name="totallyTimeSpent" value="298151000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14257812" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14257812" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.40104166" side_tool="true" visible="true" weight="0.5084507" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.104166664" side_tool="true" visible="true" weight="0.42535213" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32957748" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8964844" weight="0.42535213" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8958333" visible="true" weight="0.42535213" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.5989583" visible="true" weight="0.5084507" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5989583" weight="0.5084507" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -978,29 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Zkickstarter/views/createProject.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="92" column="128" selection-start-line="92" selection-start-column="128" selection-end-line="92" selection-end-column="128" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#11726#12894#0#HTML" />
-            <element signature="e#43#50#1" expanded="true" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Zkickstarter/views/projectEditor.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="535" column="12" lean-forward="true" selection-start-line="531" selection-start-column="11" selection-end-line="535" selection-end-column="12" />
-          <folding>
-            <element signature="e#43#50#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Zkickstarter/views/projectDetails.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1027,6 +917,29 @@
           <caret line="56" column="84" selection-start-line="56" selection-start-column="84" selection-end-line="56" selection-end-column="84" />
           <folding>
             <marker date="1533563951905" expanded="true" signature="8614:8691" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zkickstarter/views/createProject.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="31" column="124" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="124" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#11726#12894#0#HTML" />
+            <element signature="e#43#50#1" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zkickstarter/views/projectEditor.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="32" column="118" selection-start-line="32" selection-start-column="118" selection-end-line="32" selection-end-column="118" />
+          <folding>
+            <element signature="e#43#50#1" expanded="true" />
           </folding>
         </state>
       </provider>

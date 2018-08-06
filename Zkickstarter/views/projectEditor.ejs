@@ -27,7 +27,7 @@
 <%- include header %>
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
-    <h1>Create your project</h1>
+    <h1>Update your project</h1>
 
     <div class="container col-sm-20" id="mainform">
         <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-24 col-md-offset-2 col-sm-8 col-sm-offset-2">
@@ -101,14 +101,14 @@
                                 <legend>Choose project dates</legend>
 
                                 <div>
-                                    <label for="start">Start</label>
+                                    <label class="col-md-2 control-label" for="start">Start</label>
                                     <input type="date" id="start" name="project_start_date"
                                            value="2018-08-06"
                                            min="2018-01-01" max="2018-12-31" />
                                 </div>
 
                                 <div>
-                                    <label for="end">End</label>
+                                    <label class="col-md-2 control-label" for="end">End</label>
                                     <input type="date" id="end" name="project_end_date"
                                            value="2018-08-07"
                                            min="2018-08-07" max="2018-12-31" />
@@ -144,9 +144,6 @@
                                     </li>
                                     <li>
                                         Maximum number of allowed files 10 with 300 KB for each
-                                    </li>
-                                    <li>
-                                        you can select files from different folders
                                     </li>
                                 </ul>
                                 <!--To give the control a modern look, I have applied a stylesheet in the parent span.-->
