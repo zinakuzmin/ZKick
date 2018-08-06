@@ -69,6 +69,7 @@ app.get('/profile',user.profile);// render users profile
 app.get('/createProject',user.create);//to render create project page
 app.get('/getProjectEditor',user.getProjectEditor);//to render project editor page
 app.get('/getProjectImages',user.getProjectImages);// images of project
+app.get('/getProjectSupporters',user.getProjectSupporters);// images of project
 app.get('/getUserDetails',user.getUserDetails);//get user details
 app.post('/createProject',user.createproject);//to create project
 app.post('/registerDonations',user.registerDonations);

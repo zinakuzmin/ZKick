@@ -196,9 +196,19 @@
                 </div>
 
 
+                <supporters class="supporters"  ng-repeat="supporter in supporters">
+                    <h1 name="list_of_supporters" id="list_of_supporters">List of supporters</h1>
+                    <p>User <span>{{supporter.username}}</span></p>
+                </supporters>
+
                 <iframe width="1050" height="600" style="padding-top: 50px; padding-left: 25px"
                         src= <%=project.video_link%> frameborder="0" allowfullscreen>
                 </iframe>
+
+
+
+
+
             </div>
         </div>
     </div>
@@ -276,6 +286,7 @@
 
 
 <script type="text/javascript" src="/loadImages.js"></script>
+<script type="text/javascript" src="/showSupporters.js"></script>
 
 <style>
 

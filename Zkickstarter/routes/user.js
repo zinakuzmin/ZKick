@@ -231,6 +231,20 @@ exports.getProjectImages = function(req, res){
     });
 };
 
+
+
+
+//---------------------------------Get project supporters -------------------
+exports.getProjectSupporters = function(req, res){
+    var projectID = req.query.projectID;
+
+    var sql = "select ID, username, lastName, firstName from users where id in (select distinct(supporterID) from zkick.supporters where projectID = ?)";
+    db.query(sql, [projectID], function(err, result){
+        if (err) throw err;
+        res.send({data: result});
+    });
+};
+
 //---------------------------------Get closed projects -------------------
 exports.getClosedProjectsStats = function(req, res){
     var sql = "select count(*) from projects where status = 'Closed'";
